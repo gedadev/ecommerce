@@ -1,0 +1,13 @@
+.navbar {
+  margin: 1rem auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: min(100%, 1024px);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
