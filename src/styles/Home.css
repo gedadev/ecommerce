@@ -1,0 +1,23 @@
+.hero {
+  width: 100%;
+  background-color: var(--dark-color);
+  color: var(--light-font);
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.hero h1 {
+  font-size: 3rem;
+}
+
+.hero p {
+  font-size: 1.3rem;
+}
+
+.hero button {
+  margin-top: 1.5rem;
+}

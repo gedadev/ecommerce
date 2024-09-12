@@ -12,11 +12,18 @@
 }
 
 :root {
-  --bistre-color: rgb(37, 22, 5);
   --jasmine-color: rgb(246, 226, 127);
   --tan-color: rgb(226, 195, 145);
   --ashGray-color: rgb(168, 183, 171);
   --lightBlue-color: rgb(155, 190, 199);
   --light-font: rgb(253, 255, 252);
-  --dark-font: rgb(51, 51, 51);
+  --dark-color: rgb(51, 51, 51);
+}
+
+button {
+  padding: 0.5rem 1rem;
+  border-radius: 0.4rem;
+  font-weight: 600;
+  background-color: var(--jasmine-color);
+  cursor: pointer;
 }

@@ -5,6 +5,7 @@
   justify-content: space-between;
   align-items: center;
   max-width: min(100%, 1024px);
+  color: var(--dark-color);
 }
 
 .nav-links {
