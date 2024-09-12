@@ -1,14 +1,25 @@
-.navbar {
+.navbar,
+.footer {
   margin: 1rem auto;
   padding: 0 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: min(100%, 1024px);
+  max-width: min(100%, 1200px);
   color: var(--dark-color);
 }
 
 .nav-links {
   display: flex;
   gap: 2rem;
+}
+
+.footer {
+  font-size: 0.8rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1rem;
+  cursor: pointer;
 }
