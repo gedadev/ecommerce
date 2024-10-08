@@ -11,6 +11,10 @@
   font-family: "Inter", sans-serif;
 }
 
+a {
+  color: var(--dark-color);
+}
+
 :root {
   --jasmine-color: rgb(246, 226, 127);
   --tan-color: rgb(226, 195, 145);

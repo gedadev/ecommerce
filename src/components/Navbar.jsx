@@ -1,4 +1,5 @@
 import { FaOpencart } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
@@ -7,9 +8,15 @@ export default function Navbar() {
         <FaOpencart />
       </h1>
       <ul className="nav-links">
-        <li>Home</li>
-        <li>Products</li>
-        <li>Contact</li>
+        <Link to={`/`}>
+          <li>Home</li>
+        </Link>
+        <Link to={`products/`}>
+          <li>Products</li>
+        </Link>
+        <Link to={`contact/`}>
+          <li>Contact</li>
+        </Link>
       </ul>
     </nav>
   );
