@@ -41,6 +41,9 @@
 .featured-products-container {
   display: flex;
   gap: 3rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: min(90%, 1800px);
 }
 
 .product-card {
