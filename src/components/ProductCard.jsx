@@ -1,15 +1,16 @@
 import { FaStar } from "react-icons/fa";
 import { IconContext } from "react-icons";
 import { FaShoppingCart } from "react-icons/fa";
+import ImageSlider from "./ImageSlider";
 
 export default function ProductCard({ product }) {
   return (
     <article className="product-card">
       <div className="image-card">
-        <img src={product.images[0]} alt={product.brand} />
-        <span>
-          {product.availabilityStatus}: Only {product.stock} left
-        </span>
+        <ImageSlider images={product.images} alt={product.brand} />
+        {product.stock < 10 && (
+          <span>Low Stock: Only {product.stock} left</span>
+        )}
       </div>
       <div className="product-card-content">
         <h3>{product.title}</h3>

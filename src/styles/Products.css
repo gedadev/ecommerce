@@ -26,3 +26,30 @@
     flex-direction: column;
   }
 }
+
+.image-slider {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+
+.image-slider > img {
+  min-width: 100%;
+  object-fit: contain;
+  transition: all 1s ease;
+}
+
+.image-slider-dots {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%);
+  cursor: pointer;
+}
+
+.image-slider-dots > .active {
+  color: var(--ashGray-color);
+  cursor: auto;
+}
