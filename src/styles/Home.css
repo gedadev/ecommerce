@@ -47,7 +47,8 @@
 }
 
 .product-card {
-  width: 280px;
+  min-width: 250px;
+  max-width: 350px;
   height: 400px;
   background-color: var(--light-font);
   border-radius: 0.6rem;
@@ -58,10 +59,13 @@
   width: 100%;
   height: 280px;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .image-card img {
-  width: 100%;
+  width: auto;
   height: 100%;
 }
 
@@ -74,6 +78,7 @@
   font-size: 0.8rem;
   background-color: var(--jasmine-color);
   border-radius: 1rem;
+  box-shadow: 1px 1px 1px var(--dark-color);
 }
 
 .product-card-content {

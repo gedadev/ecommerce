@@ -6,7 +6,7 @@ export default function ProductCard({ product }) {
   return (
     <article className="product-card">
       <div className="image-card">
-        <img src={product.imgSrc} alt="" />
+        <img src={product.images[0]} alt={product.brand} />
         <span>
           {product.availabilityStatus}: Only {product.stock} left
         </span>
