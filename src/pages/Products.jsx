@@ -39,12 +39,17 @@ export default function Products() {
             filter[fieldset] = filter[fieldset].filter(
               (value) => value !== name
             );
+
+            if (filter[fieldset].length === 0) {
+              return null;
+            }
           }
           return filter;
         });
 
-        return newFilters;
+        return newFilters.filter((filter) => filter);
       }
+
       const newFilters = prevFilters.map((filter) => {
         if (Object.keys(filter)[0] === fieldset) {
           filter[fieldset].push(name);
