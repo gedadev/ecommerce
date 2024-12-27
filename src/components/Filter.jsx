@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
+import useFilters from "../hooks/useFilters";
 
 const formatWord = (word) =>
   word ? word.charAt(0).toUpperCase() + word.slice(1) : null;
 
-export function Filter({ values, handleFilters }) {
+export function Filter({ values }) {
   const [filterLegend, setFilterLegend] = useState(null);
   const [filterValues, setFilterValues] = useState(null);
 
@@ -18,18 +19,15 @@ export function Filter({ values, handleFilters }) {
         <legend>{formatWord(filterLegend)}</legend>
         {filterValues &&
           filterValues.map((value, index) => (
-            <FilterValue
-              value={value}
-              key={index}
-              handleFilters={handleFilters}
-            />
+            <FilterValue value={value} key={index} />
           ))}
       </fieldset>
     </div>
   );
 }
 
-function FilterValue({ value, handleFilters }) {
+function FilterValue({ value }) {
+  const { handleFilters } = useFilters();
   const val = value ? value.split(" ").join("-").toLowerCase() : "other";
 
   const formatValue = (value) =>
