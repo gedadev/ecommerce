@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import useFilters from "../hooks/useFilters";
-
-const formatWord = (word) =>
-  word ? word.charAt(0).toUpperCase() + word.slice(1) : null;
+import { formatWord } from "../utils/main";
 
 export function Filter({ values }) {
   const [filterLegend, setFilterLegend] = useState(null);
