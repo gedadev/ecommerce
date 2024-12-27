@@ -1,11 +1,11 @@
 import "../styles/Products.css";
-import ProductCard from "../components/ProductCard";
 import { Filter } from "../components/Filter";
 import FiltersProvider from "../context/FiltersContext";
 import useProducts from "../hooks/useProducts";
+import { ProductsContainer } from "../components/ProductsContainer";
 
 export default function Products() {
-  const { products, filtersValues } = useProducts();
+  const { filtersValues } = useProducts();
 
   return (
     <main className="products-section">
@@ -16,12 +16,7 @@ export default function Products() {
               <Filter key={index} values={values} />
             ))}
         </section>
-        <section className="products-container">
-          {products &&
-            products.map((product) => (
-              <ProductCard product={product} key={product.id} />
-            ))}
-        </section>
+        <ProductsContainer />
       </FiltersProvider>
     </main>
   );

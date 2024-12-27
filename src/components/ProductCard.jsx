@@ -3,7 +3,7 @@ import { IconContext } from "react-icons";
 import { FaShoppingCart } from "react-icons/fa";
 import ImageSlider from "./ImageSlider";
 
-export default function ProductCard({ product }) {
+export function ProductCard({ product }) {
   return (
     <article className="product-card">
       <div className="image-card">

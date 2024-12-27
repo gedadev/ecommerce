@@ -1,9 +1,35 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
+import useProducts from "../hooks/useProducts";
+import { formatValue } from "../utils/main";
 
 export const FiltersContext = createContext();
 
 export default function FiltersProvider({ children }) {
   const [filters, setFilters] = useState([]);
+  const { products } = useProducts();
+  const [filteredProducts, setFilteredProducts] = useState(products);
+
+  useEffect(() => {
+    if (filters.length === 0) {
+      setFilteredProducts(products);
+      return;
+    }
+
+    const filtered = products.filter((product) => {
+      return filters.every((filter) => {
+        const fieldset = Object.keys(filter)[0];
+        const values = filter[fieldset];
+
+        if (!product[fieldset]) {
+          return values.includes("other");
+        }
+
+        return values.includes(formatValue(product[fieldset]));
+      });
+    });
+
+    setFilteredProducts(filtered);
+  }, [filters, products]);
 
   const handleFilters = ({ fieldset, name, checked }) => {
     setFilters((prevFilters) => {
@@ -44,7 +70,9 @@ export default function FiltersProvider({ children }) {
   };
 
   return (
-    <FiltersContext.Provider value={{ filters, handleFilters }}>
+    <FiltersContext.Provider
+      value={{ filters, handleFilters, filteredProducts }}
+    >
       {children}
     </FiltersContext.Provider>
   );
