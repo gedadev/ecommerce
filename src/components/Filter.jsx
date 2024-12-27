@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import useFilters from "../hooks/useFilters";
-import { formatWord } from "../utils/main";
+import { formatText, formatWord, formatValue } from "../utils/main";
 
 export function Filter({ values }) {
   const [filterLegend, setFilterLegend] = useState(null);
@@ -26,13 +26,7 @@ export function Filter({ values }) {
 
 function FilterValue({ value }) {
   const { handleFilters } = useFilters();
-  const val = value ? value.split(" ").join("-").toLowerCase() : "other";
-
-  const formatValue = (value) =>
-    value
-      .split(/[ -]+/)
-      .map((word) => formatWord(word))
-      .join(" ");
+  const val = value ? formatValue(value) : "other";
 
   const handleClick = (e) => {
     const target = e.target;
@@ -45,7 +39,7 @@ function FilterValue({ value }) {
   return (
     <div>
       <input type="checkbox" name={val} id={val} onClick={handleClick} />
-      <label htmlFor={val}>{formatValue(val)}</label>
+      <label htmlFor={val}>{formatText(val)}</label>
     </div>
   );
 }
