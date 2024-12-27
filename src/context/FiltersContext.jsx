@@ -8,6 +8,29 @@ export default function FiltersProvider({ children }) {
   const [filters, setFilters] = useState([]);
   const { products } = useProducts();
   const [filteredProducts, setFilteredProducts] = useState(products);
+  const [filtersValues, setFiltersValues] = useState(null);
+
+  useEffect(() => {
+    if (filters.length === 0 && products) {
+      const category = [
+        ...new Set(products.map((product) => product.category)),
+      ];
+      const brand = [...new Set(products.map((product) => product.brand))];
+      setFiltersValues([{ category }, { brand }]);
+
+      return;
+    }
+
+    if (filteredProducts) {
+      const category = [
+        ...new Set(products.map((product) => product.category)),
+      ];
+      const brand = [
+        ...new Set(filteredProducts.map((product) => product.brand)),
+      ];
+      setFiltersValues([{ category }, { brand }]);
+    }
+  }, [filteredProducts, products, filters]);
 
   useEffect(() => {
     if (filters.length === 0) {
@@ -71,7 +94,7 @@ export default function FiltersProvider({ children }) {
 
   return (
     <FiltersContext.Provider
-      value={{ filters, handleFilters, filteredProducts }}
+      value={{ filters, handleFilters, filteredProducts, filtersValues }}
     >
       {children}
     </FiltersContext.Provider>

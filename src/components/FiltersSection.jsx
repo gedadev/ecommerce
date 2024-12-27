@@ -1,8 +1,8 @@
-import useProducts from "../hooks/useProducts";
+import useFilters from "../hooks/useFilters";
 import { Filter } from "./Filter";
 
 export function FiltersSection() {
-  const { filtersValues } = useProducts();
+  const { filtersValues } = useFilters();
 
   return (
     <section className="product-filters">
