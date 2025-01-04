@@ -7,7 +7,11 @@ export function ProductCard({ product }) {
   return (
     <article className="product-card">
       <div className="image-card">
-        <ImageSlider images={product.images} alt={product.brand} />
+        <ImageSlider
+          images={product.images}
+          alt={product.brand}
+          action="hover"
+        />
         {product.stock < 10 && (
           <span>Low Stock: Only {product.stock} left</span>
         )}

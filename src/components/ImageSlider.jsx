@@ -1,25 +1,28 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { GoDotFill } from "react-icons/go";
 
-export default function ImageSlider({ images, alt }) {
+export default function ImageSlider({ images, alt, action }) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isActive, setIsActive] = useState(action === "auto");
+
+  const getNextImage = useCallback(() => {
+    setCurrentIndex((index) => {
+      if (index === images.length - 1) {
+        return 0;
+      }
+      return index + 1;
+    });
+  }, [images]);
 
   useEffect(() => {
-    const getNextImage = () => {
-      setCurrentIndex((index) => {
-        if (index === images.length - 1) {
-          return 0;
-        }
-        return index + 1;
-      });
-    };
+    const delay = 2500;
 
-    const interval = setInterval(() => {
-      getNextImage();
-    }, 3500);
+    const slideInterval = setInterval(() => {
+      isActive && getNextImage();
+    }, delay);
 
-    return () => clearInterval(interval);
-  }, [images]);
+    return () => clearInterval(slideInterval);
+  }, [isActive, getNextImage]);
 
   return (
     <div className="image-slider">
@@ -29,6 +32,8 @@ export default function ImageSlider({ images, alt }) {
           alt={alt}
           key={index}
           style={{ translate: `${-100 * currentIndex}%` }}
+          onMouseOver={() => action === "hover" && setIsActive(true)}
+          onMouseLeave={() => setIsActive(false)}
         />
       ))}
       <div className="image-slider-dots">
