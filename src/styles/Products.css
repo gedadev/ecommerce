@@ -61,6 +61,7 @@
 
 .filter {
   margin: 1rem 0;
+  user-select: none;
 }
 
 .filter legend {
@@ -71,6 +72,13 @@
   margin: 0.5rem 1rem;
   display: flex;
   gap: 0.4rem;
+}
+
+.filter input[type="checkbox"] {
+  accent-color: var(--lightBlue-color);
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
 }
 
 @media (max-width: 1200px) {
