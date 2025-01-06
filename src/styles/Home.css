@@ -22,33 +22,36 @@
   margin-top: 1.5rem;
 }
 
-.featured {
+.featured-section {
   width: 100%;
   background-color: var(--lightBlue-color);
   color: var(--dark-color);
-  padding: 4rem 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  padding: 3rem 0;
 }
 
-.featured h2 {
-  font-size: 2rem;
-  margin-bottom: 2rem;
+.featured-container {
+  background-color: rgba(253, 255, 252, 0.6);
+  max-width: min(95%, 1800px);
+  margin: 0 auto;
+  padding: 1rem 4rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.featured-section h2 {
+  font-size: 1.5rem;
 }
 
 .featured-products-container {
+  padding: 1rem 0.5rem;
   display: flex;
-  gap: 3rem;
-  flex-wrap: wrap;
-  justify-content: center;
-  max-width: min(90%, 1800px);
+  gap: 2.5rem;
+  overflow: hidden;
 }
 
 .product-card {
-  min-width: 250px;
-  max-width: 350px;
+  max-width: 250px;
   height: 400px;
   background-color: var(--light-font);
   border-radius: 0.6rem;
