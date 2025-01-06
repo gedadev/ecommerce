@@ -2,7 +2,7 @@ import useProducts from "../hooks/useProducts";
 import { ProductCard } from "./ProductCard";
 
 export function FeaturedProducts() {
-  const { featuredProducts } = useProducts();
+  const { featuredProducts } = useProducts({ quantity: 6 });
 
   return (
     <section className="featured">

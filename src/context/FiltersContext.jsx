@@ -6,7 +6,7 @@ export const FiltersContext = createContext();
 
 export default function FiltersProvider({ children }) {
   const [filters, setFilters] = useState([]);
-  const { products } = useProducts();
+  const { products } = useProducts({ limit: 100 });
   const [filteredProducts, setFilteredProducts] = useState(products);
   const [filtersValues, setFiltersValues] = useState(null);
 
