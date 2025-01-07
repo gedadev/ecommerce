@@ -5,13 +5,12 @@ import { Link } from "react-router-dom";
 export default function Navbar() {
   return (
     <nav className="navbar">
-      <h1>
-        <FaOpencart />
-      </h1>
+      <Link to={`/`}>
+        <h1>
+          <FaOpencart />
+        </h1>
+      </Link>
       <ul className="nav-links">
-        <Link to={`/`}>
-          <li>Home</li>
-        </Link>
         <Link to={`products/`}>
           <li>Shop Now</li>
         </Link>

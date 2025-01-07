@@ -1,5 +1,6 @@
 import "../styles/Home.css";
 import { FeaturedProducts } from "../components/FeaturedProducts";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
@@ -17,7 +18,9 @@ function Hero() {
       <p>
         Discover our amazing products and enjoy a seamless shopping experience.
       </p>
-      <button>Shop Now</button>
+      <Link to={`products/`}>
+        <button>Shop Now</button>
+      </Link>
     </section>
   );
 }
