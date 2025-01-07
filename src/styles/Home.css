@@ -87,3 +87,21 @@
   gap: 2.5rem;
   overflow: hidden;
 }
+
+@media (max-width: 1050px) {
+  .featured-products-container {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+
+  .featured-container {
+    padding: 1rem;
+  }
+
+  .arrow-back,
+  .arrow-fw {
+    pointer-events: none;
+    opacity: 0;
+  }
+}
