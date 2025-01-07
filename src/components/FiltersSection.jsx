@@ -2,6 +2,7 @@ import useFilters from "../hooks/useFilters";
 import { Filter } from "./Filter";
 import { useWindowInfo } from "../hooks/useWindowInfo";
 import { MdFilterList } from "react-icons/md";
+import { MdFilterListOff } from "react-icons/md";
 import { FaWindowClose } from "react-icons/fa";
 import { useState } from "react";
 
@@ -25,7 +26,7 @@ export function FiltersSection() {
 }
 
 function MobileFilter() {
-  const { filtersValues } = useFilters();
+  const { filtersValues, filters, resetFilters } = useFilters();
   const [filterActive, setFilterActive] = useState(false);
 
   const handleMobileFilter = () => {
@@ -34,6 +35,9 @@ function MobileFilter() {
 
   return (
     <div className="mobile-filter">
+      {filters.length > 0 && (
+        <MdFilterListOff className="filter-icon" onClick={resetFilters} />
+      )}
       <MdFilterList className="filter-icon" onClick={handleMobileFilter} />
       <div
         className="filters-container"

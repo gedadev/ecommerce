@@ -126,6 +126,10 @@ export default function FiltersProvider({ children }) {
     setOrderedBy(value === "" ? null : value);
   };
 
+  const resetFilters = () => {
+    setFilters([]);
+  };
+
   return (
     <FiltersContext.Provider
       value={{
@@ -134,6 +138,7 @@ export default function FiltersProvider({ children }) {
         filteredProducts,
         filtersValues,
         handleOrderBy,
+        resetFilters,
       }}
     >
       {children}

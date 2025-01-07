@@ -203,6 +203,11 @@
   padding: 1rem;
 }
 
+.mobile-filter {
+  display: flex;
+  gap: 1rem;
+}
+
 @media (max-width: 900px) {
   .product-filters {
     width: 100%;
