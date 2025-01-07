@@ -37,6 +37,40 @@
   border-radius: 0.5rem;
   display: flex;
   flex-direction: column;
+  position: relative;
+}
+
+.arrow-back {
+  left: 1rem;
+}
+
+.arrow-fw {
+  right: 1rem;
+}
+
+.arrow-back,
+.arrow-fw {
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.arrow-back:hover,
+.arrow-fw:hover {
+  font-size: 2.4rem;
+}
+
+.featured-container .disabled {
+  color: var(--lightBlue-color);
+  font-size: 1.6rem;
+  cursor: auto;
+}
+
+.featured-container .disabled:hover {
+  font-size: 1.6rem;
 }
 
 .featured-section h2 {
@@ -51,6 +85,7 @@
 }
 
 .product-card {
+  transition: all 0.3s ease;
   max-width: 250px;
   height: 400px;
   background-color: var(--light-font);
