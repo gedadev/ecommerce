@@ -9,6 +9,7 @@ export default function FiltersProvider({ children }) {
   const { products } = useProducts({ limit: 100 });
   const [filteredProducts, setFilteredProducts] = useState(products);
   const [filtersValues, setFiltersValues] = useState(null);
+  const [orderedBy, setOrderedBy] = useState(null);
 
   useEffect(() => {
     if (filters.length === 0 && products) {
@@ -54,6 +55,35 @@ export default function FiltersProvider({ children }) {
     setFilteredProducts(filtered);
   }, [filters, products]);
 
+  useEffect(() => {
+    if (!filteredProducts) {
+      return;
+    }
+
+    switch (orderedBy) {
+      case "price-up":
+        setFilteredProducts((prevProducts) =>
+          prevProducts.toSorted((a, b) => a.price - b.price)
+        );
+        break;
+      case "price-down":
+        setFilteredProducts((prevProducts) =>
+          prevProducts.toSorted((a, b) => b.price - a.price)
+        );
+        break;
+      case "rating":
+        setFilteredProducts((prevProducts) =>
+          prevProducts.toSorted((a, b) => b.rating - a.rating)
+        );
+        break;
+      default:
+        setFilteredProducts((prevProducts) =>
+          prevProducts.toSorted((a, b) => a.id - b.id)
+        );
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [orderedBy]);
+
   const handleFilters = ({ fieldset, name, checked }) => {
     setFilters((prevFilters) => {
       const foundFilter = prevFilters.find(
@@ -92,9 +122,19 @@ export default function FiltersProvider({ children }) {
     });
   };
 
+  const handleOrderBy = (value) => {
+    setOrderedBy(value === "" ? null : value);
+  };
+
   return (
     <FiltersContext.Provider
-      value={{ filters, handleFilters, filteredProducts, filtersValues }}
+      value={{
+        filters,
+        handleFilters,
+        filteredProducts,
+        filtersValues,
+        handleOrderBy,
+      }}
     >
       {children}
     </FiltersContext.Provider>
