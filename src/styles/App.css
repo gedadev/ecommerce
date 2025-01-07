@@ -30,3 +30,19 @@
   gap: 1rem;
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  .navbar,
+  .footer {
+    padding: 0 1rem;
+  }
+
+  .nav-links {
+    gap: 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .footer {
+    font-size: 0.7rem;
+  }
+}
