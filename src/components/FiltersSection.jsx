@@ -6,10 +6,25 @@ export function FiltersSection() {
 
   return (
     <section className="product-filters">
+      <OrderBy />
       {filtersValues &&
         filtersValues.map((values, index) => (
           <Filter key={index} values={values} />
         ))}
     </section>
+  );
+}
+
+function OrderBy() {
+  return (
+    <div className="order-by">
+      <label htmlFor="order-by">Order by:</label>
+      <select name="order-by" id="order-by">
+        <option value="">Featured</option>
+        <option value="price-up">Price: Low to High</option>
+        <option value="price-down">Price: High to Low</option>
+        <option value="rating">Rating</option>
+      </select>
+    </div>
   );
 }
