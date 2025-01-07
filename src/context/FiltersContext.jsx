@@ -38,8 +38,8 @@ export default function FiltersProvider({ children }) {
       return;
     }
 
-    const filtered = products.filter((product) => {
-      return filters.every((filter) => {
+    const filtered = products.filter((product) =>
+      filters.every((filter) => {
         const fieldset = Object.keys(filter)[0];
         const values = filter[fieldset];
 
@@ -48,8 +48,8 @@ export default function FiltersProvider({ children }) {
         }
 
         return values.includes(formatValue(product[fieldset]));
-      });
-    });
+      })
+    );
 
     setFilteredProducts(filtered);
   }, [filters, products]);
