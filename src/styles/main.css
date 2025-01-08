@@ -35,4 +35,5 @@ button {
   font-weight: 600;
   background-color: var(--jasmine-color);
   cursor: pointer;
+  height: fit-content;
 }
