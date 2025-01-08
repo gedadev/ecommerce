@@ -10,6 +10,9 @@ export default function FiltersProvider({ children }) {
   const [filteredProducts, setFilteredProducts] = useState(products);
   const [filtersValues, setFiltersValues] = useState(null);
   const [orderedBy, setOrderedBy] = useState(null);
+  const [productsPerPage, setProductsPerPage] = useState(20);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
     if (filters.length === 0 && products) {
@@ -84,6 +87,14 @@ export default function FiltersProvider({ children }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orderedBy]);
 
+  useEffect(() => {
+    if (!filteredProducts) {
+      return;
+    }
+
+    setTotalPages(Math.ceil(filteredProducts.length / productsPerPage));
+  }, [filteredProducts, productsPerPage]);
+
   const handleFilters = ({ fieldset, name, checked }) => {
     setFilters((prevFilters) => {
       const foundFilter = prevFilters.find(
@@ -130,6 +141,16 @@ export default function FiltersProvider({ children }) {
     setFilters([]);
   };
 
+  const handleProductsPerPage = (value) => {
+    setProductsPerPage(value);
+  };
+
+  const handleCurrentPage = (page) => {
+    if (page < 1 || page > totalPages) return;
+
+    setCurrentPage(page);
+  };
+
   return (
     <FiltersContext.Provider
       value={{
@@ -139,6 +160,11 @@ export default function FiltersProvider({ children }) {
         filtersValues,
         handleOrderBy,
         resetFilters,
+        productsPerPage,
+        handleProductsPerPage,
+        currentPage,
+        handleCurrentPage,
+        totalPages,
       }}
     >
       {children}

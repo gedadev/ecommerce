@@ -225,3 +225,23 @@
     font-size: 0.6rem;
   }
 }
+
+/* product navigation */
+
+.product-navigation {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem 0;
+  grid-column: 1 / -1;
+  cursor: pointer;
+}
+
+.product-navigation button {
+  background-color: var(--lightBlue-color);
+}
+
+.product-navigation .active {
+  cursor: default;
+  opacity: 0.6;
+}
