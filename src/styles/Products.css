@@ -208,6 +208,19 @@
   gap: 1rem;
 }
 
+.reset-filters {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--error-color);
+}
+
+.reset-filters .filter-icon {
+  font-size: 1rem;
+}
+
 @media (max-width: 900px) {
   .product-filters {
     width: 100%;

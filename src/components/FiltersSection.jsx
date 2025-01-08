@@ -7,12 +7,18 @@ import { FaWindowClose } from "react-icons/fa";
 import { useState } from "react";
 
 export function FiltersSection() {
-  const { filtersValues } = useFilters();
+  const { filtersValues, filters, resetFilters } = useFilters();
   const { width } = useWindowInfo();
 
   return (
     <section className="product-filters">
       <OrderBy />
+      {filters.length > 0 && (
+        <div className="reset-filters" onClick={resetFilters}>
+          <p>Reset filters</p>
+          <MdFilterListOff className="filter-icon" />
+        </div>
+      )}
       {width > 900 ? (
         filtersValues &&
         filtersValues.map((values, index) => (
