@@ -258,3 +258,13 @@
   cursor: default;
   opacity: 0.6;
 }
+
+@media (max-width: 900px) {
+  .product-navigation {
+    gap: 0.4rem;
+  }
+
+  .product-navigation button {
+    padding: 0.3rem 0.5rem;
+  }
+}
