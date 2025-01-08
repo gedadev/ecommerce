@@ -13,12 +13,14 @@ export function FiltersSection() {
   return (
     <section className="product-filters">
       <OrderBy />
-      {filters.length > 0 && (
+
+      {width > 900 && filters.length > 0 && (
         <div className="reset-filters" onClick={resetFilters}>
           <p>Reset filters</p>
           <MdFilterListOff className="filter-icon" />
         </div>
       )}
+
       {width > 900 ? (
         filtersValues &&
         filtersValues.map((values, index) => (
