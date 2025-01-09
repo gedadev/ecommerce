@@ -1,7 +1,11 @@
-import useCart from "../hooks/useCart";
+import "../styles/Cart.css";
+import { CartContainer } from "../components/CartContainer";
 
 export default function Cart() {
-  const { cart } = useCart();
-
-  return <>{console.log(cart)}</>;
+  return (
+    <main className="cart-section">
+      <CartContainer />
+      <section className="cart-checkout"></section>
+    </main>
+  );
 }
