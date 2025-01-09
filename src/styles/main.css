@@ -36,4 +36,10 @@ button {
   background-color: var(--jasmine-color);
   cursor: pointer;
   height: fit-content;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  scale: 1.05;
+  box-shadow: 0px 0px 5px var(--lightBlue-color);
 }
