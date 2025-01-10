@@ -80,6 +80,11 @@
   color: var(--light-font);
 }
 
+.product-card-content button:hover {
+  background-color: var(--tan-color);
+  color: var(--dark-color);
+}
+
 .product-value {
   display: flex;
   width: 100%;
