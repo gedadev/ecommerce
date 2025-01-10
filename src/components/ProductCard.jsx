@@ -2,8 +2,11 @@ import { FaStar } from "react-icons/fa";
 import { IconContext } from "react-icons";
 import { FaShoppingCart } from "react-icons/fa";
 import ImageSlider from "./ImageSlider";
+import useCart from "../hooks/useCart";
 
 export function ProductCard({ product }) {
+  const { addToCart } = useCart();
+
   return (
     <article className="product-card">
       <div className="image-card">
@@ -27,7 +30,7 @@ export function ProductCard({ product }) {
             {product.rating}
           </p>
         </div>
-        <button>
+        <button onClick={() => addToCart(product)}>
           <FaShoppingCart className="icon" />
           Add to Cart
         </button>
