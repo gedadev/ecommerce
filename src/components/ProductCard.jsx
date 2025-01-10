@@ -3,9 +3,18 @@ import { IconContext } from "react-icons";
 import { FaShoppingCart } from "react-icons/fa";
 import ImageSlider from "./ImageSlider";
 import useCart from "../hooks/useCart";
+import { useEffect, useState } from "react";
+import { QuantitySelector } from "./QuantitySelector";
 
 export function ProductCard({ product }) {
-  const { addToCart } = useCart();
+  const { addToCart, cart } = useCart();
+  const [itemInCart, setItemInCart] = useState(false);
+
+  useEffect(() => {
+    const foundItem = cart.find((item) => item.id === product.id);
+
+    setItemInCart(foundItem ? true : false);
+  }, [cart, product]);
 
   return (
     <article className="product-card">
@@ -30,10 +39,14 @@ export function ProductCard({ product }) {
             {product.rating}
           </p>
         </div>
-        <button onClick={() => addToCart(product)}>
-          <FaShoppingCart className="icon" />
-          Add to Cart
-        </button>
+        {itemInCart ? (
+          <QuantitySelector product={product} />
+        ) : (
+          <button onClick={() => addToCart(product)}>
+            <FaShoppingCart className="icon" />
+            Add to Cart
+          </button>
+        )}
       </div>
     </article>
   );

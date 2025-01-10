@@ -88,6 +88,25 @@
   margin-top: 1rem;
 }
 
+/* quantity selector */
+
+.quantity-selector {
+  display: flex;
+  gap: 0.1rem;
+  justify-content: space-evenly;
+}
+
+.quantity-selector input {
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.4rem;
+  text-align: center;
+}
+
+.quantity-selector label {
+  position: absolute;
+}
+
 @media (max-width: 900px) {
   .cart-section {
     flex-direction: column;
