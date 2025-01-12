@@ -1,13 +1,18 @@
-import { createContext, useState } from "react";
+import { createContext, useCallback, useState } from "react";
 
 export const CartContext = createContext();
 
 export default function CartProvider({ children }) {
   const [cart, setCart] = useState([]);
 
+  const findItemInCart = useCallback(
+    (id) => cart.find((item) => item.id === id),
+    [cart]
+  );
+
   const addToCart = (product) => {
     setCart((prevCart) => {
-      const foundItem = prevCart.find((item) => item.id === product.id);
+      const foundItem = findItemInCart(product.id);
 
       if (foundItem) {
         return prevCart;
@@ -53,7 +58,13 @@ export default function CartProvider({ children }) {
 
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, incrementQuantity, decreaseQuantity }}
+      value={{
+        cart,
+        addToCart,
+        incrementQuantity,
+        decreaseQuantity,
+        findItemInCart,
+      }}
     >
       {children}
     </CartContext.Provider>

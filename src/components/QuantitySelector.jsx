@@ -1,22 +1,23 @@
 import { FaMinus } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
 import { FaRegTrashAlt } from "react-icons/fa";
-
 import useCart from "../hooks/useCart";
 import { useEffect, useState } from "react";
 
 export function QuantitySelector({ product }) {
-  const { incrementQuantity, decreaseQuantity, cart } = useCart();
+  const { incrementQuantity, decreaseQuantity, findItemInCart } = useCart();
   const [lastItem, setLastItem] = useState(null);
 
   useEffect(() => {
-    const foundItem = cart.find((item) => item.id === product.id);
+    const foundItem = findItemInCart(product.id);
+
+    if (!foundItem) return;
 
     setLastItem(foundItem.quantity === 1);
-  }, [cart, product]);
+  }, [product, findItemInCart]);
 
   const getQuantity = (id) => {
-    const foundItem = cart.find((item) => item.id === id);
+    const foundItem = findItemInCart(id);
 
     if (!foundItem) return 0;
 

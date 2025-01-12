@@ -7,14 +7,14 @@ import { useEffect, useState } from "react";
 import { QuantitySelector } from "./QuantitySelector";
 
 export function ProductCard({ product }) {
-  const { addToCart, cart } = useCart();
+  const { addToCart, findItemInCart } = useCart();
   const [itemInCart, setItemInCart] = useState(false);
 
   useEffect(() => {
-    const foundItem = cart.find((item) => item.id === product.id);
+    const foundItem = findItemInCart(product.id);
 
     setItemInCart(foundItem ? true : false);
-  }, [cart, product]);
+  }, [product, findItemInCart]);
 
   return (
     <article className="product-card">
