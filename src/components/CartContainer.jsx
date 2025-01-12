@@ -1,4 +1,5 @@
 import useCart from "../hooks/useCart";
+import { QuantitySelector } from "./QuantitySelector";
 
 export function CartContainer() {
   const { cart } = useCart();
@@ -25,7 +26,8 @@ function CartItem({ product }) {
         <h2>{product.title}</h2>
       </div>
       <div>
-        <p>{product.price}</p>
+        <p>$ {product.price}</p>
+        <QuantitySelector product={product} />
       </div>
       <div className="separator" />
     </li>
