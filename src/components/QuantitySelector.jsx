@@ -1,9 +1,19 @@
 import { FaMinus } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
+import { FaRegTrashAlt } from "react-icons/fa";
+
 import useCart from "../hooks/useCart";
+import { useEffect, useState } from "react";
 
 export function QuantitySelector({ product }) {
   const { incrementQuantity, decreaseQuantity, cart } = useCart();
+  const [lastItem, setLastItem] = useState(null);
+
+  useEffect(() => {
+    const foundItem = cart.find((item) => item.id === product.id);
+
+    setLastItem(foundItem.quantity === 1);
+  }, [cart, product]);
 
   const getQuantity = (id) => {
     const foundItem = cart.find((item) => item.id === id);
@@ -18,7 +28,7 @@ export function QuantitySelector({ product }) {
   return (
     <div className="quantity-selector">
       <button onClick={() => decreaseQuantity(product.id)}>
-        <FaMinus />
+        {lastItem ? <FaRegTrashAlt /> : <FaMinus />}
       </button>
       <label htmlFor={`product-${product.id}-quantity`}></label>
       <input
