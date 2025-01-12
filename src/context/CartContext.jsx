@@ -32,8 +32,23 @@ export default function CartProvider({ children }) {
     });
   };
 
-  const decreaseQuantity = () => {
-    console.log("less");
+  const decreaseQuantity = (id) => {
+    setCart((prevCart) => {
+      const newCart = prevCart.map((item) => {
+        const newItem = { ...item };
+        if (newItem.id === id) {
+          newItem.quantity = newItem.quantity - 1;
+        }
+
+        if (newItem.quantity < 1) {
+          return;
+        }
+
+        return newItem;
+      });
+
+      return newCart.filter(Boolean);
+    });
   };
 
   return (
