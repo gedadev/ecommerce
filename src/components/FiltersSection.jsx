@@ -51,6 +51,9 @@ function MobileFilter() {
         className="filters-container"
         style={{
           transform: filterActive ? "translateX(0)" : "translateX(100%)",
+          boxShadow: filterActive
+            ? "0 0 10px var(--dark-color)"
+            : "0 0 0px var(--dark-color)",
         }}
       >
         <FaWindowClose className="close-icon" onClick={handleMobileFilter} />

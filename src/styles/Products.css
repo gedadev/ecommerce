@@ -199,8 +199,6 @@
   top: 0;
   right: 0;
   z-index: 1;
-  box-shadow: 0 0 10px var(--dark-color);
-  transform: translateX(100%);
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
