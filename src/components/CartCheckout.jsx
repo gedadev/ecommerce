@@ -1,19 +1,23 @@
+import useCart from "../hooks/useCart";
+
 export function CartCheckout() {
+  const { subtotal, shippingCost, total } = useCart();
+
   return (
     <section className="cart-checkout">
       <h1>Checkout</h1>
       <div className="cart-checkout-container">
         <div>
           <h3>Subtotal</h3>
-          <p>$0.00</p>
+          <p>${subtotal}</p>
         </div>
         <div>
           <h3>Shipping</h3>
-          <p>$0.00</p>
+          <p>${shippingCost}</p>
         </div>
         <div>
           <h3>Total</h3>
-          <p>$0.00</p>
+          <p>${total}</p>
         </div>
         <button>Checkout</button>
       </div>

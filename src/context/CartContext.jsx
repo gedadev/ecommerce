@@ -1,9 +1,33 @@
-import { createContext, useCallback, useState } from "react";
+import { createContext, useCallback, useEffect, useState } from "react";
 
 export const CartContext = createContext();
 
 export default function CartProvider({ children }) {
   const [cart, setCart] = useState([]);
+  const [subtotal, setSubtotal] = useState(0);
+  const [shippingCost, setShippingCost] = useState(0);
+  const [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    setSubtotal(() => {
+      const sum = cart.reduce(
+        (total, item) => total + item.price * item.quantity,
+        0
+      );
+
+      return sum.toFixed(2);
+    });
+
+    setShippingCost((0).toFixed(2));
+  }, [cart]);
+
+  useEffect(() => {
+    setTotal(() => {
+      const sum = Number(subtotal) + Number(shippingCost);
+
+      return sum.toFixed(2);
+    });
+  }, [subtotal, shippingCost]);
 
   const findItemInCart = useCallback(
     (id) => cart.find((item) => item.id === id),
@@ -64,6 +88,9 @@ export default function CartProvider({ children }) {
         incrementQuantity,
         decreaseQuantity,
         findItemInCart,
+        subtotal,
+        shippingCost,
+        total,
       }}
     >
       {children}
