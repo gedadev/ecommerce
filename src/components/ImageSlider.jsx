@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { GoDotFill } from "react-icons/go";
 
-export default function ImageSlider({ images, alt, action }) {
+export default function ImageSlider({ images, alt, action, sliderIndex }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isActive, setIsActive] = useState(action === "auto");
 
@@ -15,6 +15,11 @@ export default function ImageSlider({ images, alt, action }) {
   }, [images]);
 
   useEffect(() => {
+    if (action === "none") {
+      setCurrentIndex(sliderIndex);
+      return;
+    }
+
     const delay = 2500;
 
     const slideInterval = setInterval(() => {
@@ -22,7 +27,7 @@ export default function ImageSlider({ images, alt, action }) {
     }, delay);
 
     return () => clearInterval(slideInterval);
-  }, [isActive, getNextImage]);
+  }, [isActive, getNextImage, action, sliderIndex]);
 
   return (
     <div className="image-slider">
