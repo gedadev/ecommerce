@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useProducts from "../hooks/useProducts";
+import { ProductDetailInfo } from "../components/ProductDetailInfo";
 import "../styles/Detail.css";
 
 export default function ProductDetail() {
@@ -26,7 +27,7 @@ export default function ProductDetail() {
 
   return (
     <main className="product-detail">
-      <section className="product-info"></section>
+      <ProductDetailInfo product={product} />
       <section className="product-description"></section>
       <section className="product-reviews"></section>
     </main>
