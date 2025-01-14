@@ -1,0 +1,33 @@
+.product-detail {
+  max-width: min(1800px, 100%);
+  display: flex;
+  flex-direction: column;
+}
+
+.product-info {
+  display: flex;
+  margin: 0 4rem;
+}
+
+.product-info .graphics {
+  width: 30%;
+  display: flex;
+  height: 30rem;
+}
+
+.image-list {
+  width: 3rem;
+}
+
+.image-list img {
+  cursor: pointer;
+  margin: 0.4rem 0;
+  width: 3rem;
+  height: 3rem;
+  object-fit: contain;
+}
+
+.product-info .image-slider img {
+  width: 100%;
+  height: auto;
+}
