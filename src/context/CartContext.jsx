@@ -30,7 +30,9 @@ export default function CartProvider({ children }) {
   }, [subtotal, shippingCost]);
 
   const findItemInCart = useCallback(
-    (id) => cart.find((item) => item.id === id),
+    (id) => {
+      return cart.find((item) => Number(item.id) === Number(id));
+    },
     [cart]
   );
 
