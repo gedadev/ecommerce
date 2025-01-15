@@ -16,5 +16,8 @@ export default function useProducts({ limit = 50, quantity = 5 }) {
       });
   }, [limit, quantity]);
 
-  return { products, featuredProducts };
+  const findProduct = (id) =>
+    products && products.find((product) => Number(product.id) === Number(id));
+
+  return { products, featuredProducts, findProduct };
 }
