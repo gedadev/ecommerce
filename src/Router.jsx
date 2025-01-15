@@ -21,7 +21,7 @@ export default function Router() {
         },
         {
           path: ":id",
-          element: <ProductDetail></ProductDetail>,
+          element: <ProductDetail />,
         },
         {
           path: "/login",
