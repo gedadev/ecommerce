@@ -18,8 +18,8 @@ export function ProductCard({ product }) {
   }, [product, findItemInCart]);
 
   return (
-    <Link to={`/${product.id}`}>
-      <article className="product-card">
+    <article className="product-card">
+      <Link to={`/${product.id}`}>
         <div className="image-card">
           <ImageSlider
             images={product.images}
@@ -30,27 +30,27 @@ export function ProductCard({ product }) {
             <span>Low Stock: Only {product.stock} left</span>
           )}
         </div>
-        <div className="product-card-content">
-          <h3>{product.title}</h3>
-          <div className="product-value">
-            <p className="product-price">${product.price}</p>
-            <p>
-              <IconContext.Provider value={{ color: "rgb(247, 184, 1)" }}>
-                <FaStar className="icon" />
-              </IconContext.Provider>
-              {product.rating}
-            </p>
-          </div>
-          {itemInCart ? (
-            <QuantitySelector product={product} />
-          ) : (
-            <button onClick={() => addToCart(product)}>
-              <FaShoppingCart className="icon" />
-              Add to Cart
-            </button>
-          )}
+      </Link>
+      <div className="product-card-content">
+        <h3>{product.title}</h3>
+        <div className="product-value">
+          <p className="product-price">${product.price}</p>
+          <p>
+            <IconContext.Provider value={{ color: "rgb(247, 184, 1)" }}>
+              <FaStar className="icon" />
+            </IconContext.Provider>
+            {product.rating}
+          </p>
         </div>
-      </article>
-    </Link>
+        {itemInCart ? (
+          <QuantitySelector product={product} />
+        ) : (
+          <button onClick={() => addToCart(product)}>
+            <FaShoppingCart className="icon" />
+            Add to Cart
+          </button>
+        )}
+      </div>
+    </article>
   );
 }
