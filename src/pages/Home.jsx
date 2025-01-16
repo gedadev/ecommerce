@@ -1,11 +1,13 @@
 import "../styles/Home.css";
 import { FeaturedProducts } from "../components/FeaturedProducts";
 import { Link } from "react-router-dom";
+import { CategoriesSection } from "../components/CategoriesSection";
 
 export default function Home() {
   return (
     <main>
       <Hero />
+      <CategoriesSection />
       <FeaturedProducts />
     </main>
   );
