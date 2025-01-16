@@ -5,7 +5,7 @@ import { formatValue } from "../utils/main";
 export const FiltersContext = createContext();
 
 export default function FiltersProvider({ children }) {
-  const { products, categories, brands } = useProducts({ limit: 100 });
+  const { products, categories, brands } = useProducts({});
 
   const [filters, setFilters] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState(products);

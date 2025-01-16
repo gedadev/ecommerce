@@ -3,7 +3,7 @@ import useProducts from "./useProducts";
 
 export default function useDetail({ id }) {
   const [product, setProduct] = useState(null);
-  const { findProduct } = useProducts({ limit: 100 });
+  const { findProduct } = useProducts({});
 
   useEffect(() => {
     setProduct(() => findProduct(id));

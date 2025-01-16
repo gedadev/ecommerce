@@ -3,7 +3,7 @@ import useProducts from "../hooks/useProducts";
 import { formatText, formatValue } from "../utils/main";
 
 export function CategoriesSection() {
-  const { categories } = useProducts({ limit: 100 });
+  const { categories } = useProducts({});
 
   return (
     <section className="categories-section">
