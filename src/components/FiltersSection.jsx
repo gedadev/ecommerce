@@ -4,11 +4,23 @@ import { useWindowInfo } from "../hooks/useWindowInfo";
 import { MdFilterList } from "react-icons/md";
 import { MdFilterListOff } from "react-icons/md";
 import { FaWindowClose } from "react-icons/fa";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 export function FiltersSection() {
-  const { filtersValues, filters, resetFilters } = useFilters();
+  const { filtersValues, filters, resetFilters, handleFilters } = useFilters();
   const { width } = useWindowInfo();
+  const { category } = useParams();
+
+  useEffect(() => {
+    if (!category) return;
+
+    const fieldset = "category";
+    const name = category;
+    const checked = true;
+
+    handleFilters({ fieldset, name, checked });
+  }, [category, handleFilters]);
 
   return (
     <section className="product-filters">

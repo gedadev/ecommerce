@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useCallback, useEffect, useState } from "react";
 import useProducts from "../hooks/useProducts";
 import { formatValue } from "../utils/main";
 
@@ -38,6 +38,8 @@ export default function FiltersProvider({ children }) {
       setFilteredProducts(products);
       return;
     }
+
+    if (!products) return;
 
     const filtered = products.filter((product) =>
       filters.every((filter) => {
@@ -92,7 +94,7 @@ export default function FiltersProvider({ children }) {
     setTotalPages(Math.ceil(filteredProducts.length / productsPerPage));
   }, [filteredProducts, productsPerPage]);
 
-  const handleFilters = ({ fieldset, name, checked }) => {
+  const handleFilters = useCallback(({ fieldset, name, checked }) => {
     setFilters((prevFilters) => {
       const foundFilter = prevFilters.find(
         (filter) => Object.keys(filter)[0] === fieldset
@@ -128,7 +130,7 @@ export default function FiltersProvider({ children }) {
 
       return newFilters;
     });
-  };
+  }, []);
 
   const handleOrderBy = (value) => {
     setOrderedBy(value === "" ? null : value);
