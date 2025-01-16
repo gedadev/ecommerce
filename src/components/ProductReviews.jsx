@@ -19,7 +19,7 @@ export function ProductReviews() {
         )}
       </div>
       <div className="reviews">
-        {product &&
+        {product && product.reviews.length > 0 ? (
           product.reviews.map((review, i) => (
             <div key={i}>
               <h3>{review.reviewerName}</h3>
@@ -30,7 +30,10 @@ export function ProductReviews() {
               <RatingStars length={review.rating} />
               <p>{review.comment}</p>
             </div>
-          ))}
+          ))
+        ) : (
+          <p>No reviews, Soyez le premier</p>
+        )}
       </div>
     </section>
   );
