@@ -1,17 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import ImageSlider from "./ImageSlider";
-import useProducts from "../hooks/useProducts";
+import useDetail from "../hooks/useDetail";
 
 export function DetailGraphics() {
   const [sliderIndex, setSliderIndex] = useState(0);
-  const [product, setProduct] = useState(null);
   const { id } = useParams();
-  const { findProduct } = useProducts({ limit: 100 });
-
-  useEffect(() => {
-    setProduct(() => findProduct(id));
-  }, [findProduct, id]);
+  const { product } = useDetail({ id });
 
   const handleClick = (index) => setSliderIndex(index);
 
