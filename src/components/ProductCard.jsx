@@ -19,7 +19,7 @@ export function ProductCard({ product }) {
 
   return (
     <article className="product-card">
-      <Link to={`/${product.id}`}>
+      <Link to={`/product/${product.id}`}>
         <div className="image-card">
           <ImageSlider
             images={product.images}
