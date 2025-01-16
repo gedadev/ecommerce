@@ -1,8 +1,11 @@
 import { FaOpencart } from "react-icons/fa";
 import { TiShoppingCart } from "react-icons/ti";
 import { Link } from "react-router-dom";
+import useCart from "../hooks/useCart";
 
 export default function Navbar() {
+  const { cart } = useCart();
+
   return (
     <nav className="navbar">
       <Link to={`/`}>
@@ -20,6 +23,9 @@ export default function Navbar() {
         <Link to={`cart/`}>
           <li className="cart-icon">
             <TiShoppingCart style={{ fontSize: "1.3rem" }} />
+            <span>
+              {cart.reduce((count, item) => count + item.quantity, 0)}
+            </span>
           </li>
         </Link>
       </ul>

@@ -19,6 +19,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+}
+
+.cart-icon span {
+  position: absolute;
+  top: -0.2rem;
+  right: -0.3rem;
+  width: 0.8rem;
+  height: 0.8rem;
+  font-size: 0.7rem;
+  border-radius: 50%;
+  background-color: var(--error-color);
+  color: var(--light-font);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .footer {
