@@ -22,7 +22,7 @@ function CartItem({ product }) {
   return (
     <li key={product.id} className="cart-item">
       <div>
-        <img src={product.images[0]} alt={product.title} />
+        <img src={product.thumbnail} alt={product.title} />
         <h2>{product.title}</h2>
       </div>
       <div>
