@@ -1,21 +1,16 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import useProducts from "../hooks/useProducts";
 import { IconContext } from "react-icons";
 import { FaShoppingCart, FaStar } from "react-icons/fa";
 import useCart from "../hooks/useCart";
 import { QuantitySelector } from "./QuantitySelector";
+import useDetail from "../hooks/useDetail";
 
 export function DetailSummary() {
-  const [product, setProduct] = useState(null);
   const { id } = useParams();
-  const { findProduct } = useProducts({ limit: 100 });
+  const { product } = useDetail({ id });
   const [itemInCart, setItemInCart] = useState(false);
   const { addToCart, findItemInCart } = useCart();
-
-  useEffect(() => {
-    setProduct(() => findProduct(id));
-  }, [findProduct, id]);
 
   useEffect(() => {
     const foundItem = findItemInCart(id);

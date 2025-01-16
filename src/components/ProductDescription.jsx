@@ -1,15 +1,9 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import useProducts from "../hooks/useProducts";
+import useDetail from "../hooks/useDetail";
 
 export function ProductDescription() {
-  const [product, setProduct] = useState(null);
   const { id } = useParams();
-  const { findProduct } = useProducts({ limit: 100 });
-
-  useEffect(() => {
-    setProduct(() => findProduct(id));
-  }, [findProduct, id]);
+  const { product } = useDetail({ id });
 
   return (
     <section className="product-description">
