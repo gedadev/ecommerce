@@ -24,6 +24,10 @@ export default function Router() {
           element: <ProductDetail />,
         },
         {
+          path: "category/:category",
+          element: <Products />,
+        },
+        {
           path: "/login",
           element: <></>,
         },
