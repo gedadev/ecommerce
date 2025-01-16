@@ -11,3 +11,11 @@ export const formatText = (value) =>
         .map((word) => formatWord(word))
         .join(" ")
     : "other";
+
+export const formatDate = (isoDate) => {
+  const dateObject = new Date(isoDate);
+  const date = dateObject.toLocaleDateString();
+  const time = dateObject.toLocaleTimeString();
+
+  return { date, time };
+};
