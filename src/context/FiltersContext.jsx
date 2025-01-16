@@ -5,8 +5,9 @@ import { formatValue } from "../utils/main";
 export const FiltersContext = createContext();
 
 export default function FiltersProvider({ children }) {
+  const { products, categories, brands } = useProducts({ limit: 100 });
+
   const [filters, setFilters] = useState([]);
-  const { products } = useProducts({ limit: 100 });
   const [filteredProducts, setFilteredProducts] = useState(products);
   const [filtersValues, setFiltersValues] = useState(null);
   const [orderedBy, setOrderedBy] = useState(null);
@@ -16,25 +17,21 @@ export default function FiltersProvider({ children }) {
 
   useEffect(() => {
     if (filters.length === 0 && products) {
-      const category = [
-        ...new Set(products.map((product) => product.category)),
-      ];
-      const brand = [...new Set(products.map((product) => product.brand))];
+      const category = categories;
+      const brand = brands;
       setFiltersValues([{ category }, { brand }]);
 
       return;
     }
 
     if (filteredProducts) {
-      const category = [
-        ...new Set(products.map((product) => product.category)),
-      ];
+      const category = categories;
       const brand = [
         ...new Set(filteredProducts.map((product) => product.brand)),
       ];
       setFiltersValues([{ category }, { brand }]);
     }
-  }, [filteredProducts, products, filters]);
+  }, [filteredProducts, products, filters, categories, brands]);
 
   useEffect(() => {
     if (filters.length === 0) {
