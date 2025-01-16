@@ -87,6 +87,18 @@
   font-size: 0.8rem;
 }
 
+/* description */
+
+.product-description {
+  margin: 2rem 4rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 @media (max-width: 900px) {
   .product-info {
     flex-direction: column;
@@ -104,5 +116,9 @@
 
   .summary {
     padding: 1rem;
+  }
+
+  .product-description {
+    margin: 2rem 1rem;
   }
 }
