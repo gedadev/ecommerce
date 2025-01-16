@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { IconContext } from "react-icons";
-import { FaShoppingCart, FaStar } from "react-icons/fa";
+import { FaShoppingCart } from "react-icons/fa";
 import useCart from "../hooks/useCart";
 import { QuantitySelector } from "./QuantitySelector";
 import useDetail from "../hooks/useDetail";
+import { RatingStars } from "./RatingStars";
 
 export function DetailSummary() {
   const { id } = useParams();
@@ -27,14 +27,7 @@ export function DetailSummary() {
               <h2>{product.title}</h2>
               <p>SKU: {product.sku}</p>
               <div className="rating-stars">
-                {Array.from({ length: Math.round(product.rating) }, (_, i) => (
-                  <IconContext.Provider
-                    key={i}
-                    value={{ color: "rgb(247, 184, 1)" }}
-                  >
-                    <FaStar className="icon" />
-                  </IconContext.Provider>
-                ))}{" "}
+                <RatingStars length={Math.round(product.rating)} />
                 <p>({product.rating})</p>
               </div>
             </div>
