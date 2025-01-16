@@ -1,7 +1,7 @@
 import "../styles/Home.css";
-import { FeaturedProducts } from "../components/FeaturedProducts";
-import { Link } from "react-router-dom";
+import { Hero } from "../components/Hero";
 import { CategoriesSection } from "../components/CategoriesSection";
+import { FeaturedProducts } from "../components/FeaturedProducts";
 
 export default function Home() {
   return (
@@ -10,19 +10,5 @@ export default function Home() {
       <CategoriesSection />
       <FeaturedProducts />
     </main>
-  );
-}
-
-function Hero() {
-  return (
-    <section className="hero">
-      <h1>Welcome to React Store</h1>
-      <p>
-        Discover our amazing products and enjoy a seamless shopping experience.
-      </p>
-      <Link to={`products/`}>
-        <button>Shop Now</button>
-      </Link>
-    </section>
   );
 }
