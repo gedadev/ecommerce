@@ -1,11 +1,11 @@
 import { DetailGraphics } from "./DetailGraphics";
+import { DetailSummary } from "./DetailSummary";
 
 export function ProductDetailInfo() {
   return (
     <section className="product-info">
       <DetailGraphics />
-      <div className="summary"></div>
-      <div className="buy-box"></div>
+      <DetailSummary />
     </section>
   );
 }
