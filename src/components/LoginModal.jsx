@@ -1,7 +1,8 @@
 import { useState } from "react";
 import useCustomer from "../hooks/useCustomer";
+import { FaWindowClose } from "react-icons/fa";
 
-export function LoginModal() {
+export function LoginModal({ handleModal }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const { authUser, isLoggedIn } = useCustomer();
@@ -14,8 +15,9 @@ export function LoginModal() {
 
   return (
     <div className="login-modal">
+      <FaWindowClose className="close-icon" onClick={handleModal} />
       {isLoggedIn ? (
-        <CustomerModal />
+        <CustomerModal handleModal={handleModal} />
       ) : (
         <form onSubmit={handleSubmit}>
           <h3>Login</h3>

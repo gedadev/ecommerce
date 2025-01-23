@@ -28,7 +28,7 @@ export default function Navbar() {
         </Link>
         <div className="login-link">
           <li onClick={handleModal}>{isLoggedIn ? "Welcome" : "Login"}</li>
-          {activeModal && <LoginModal />}
+          {activeModal && <LoginModal handleModal={handleModal} />}
         </div>
         <Link to={`cart/`}>
           <li className="cart-icon">
