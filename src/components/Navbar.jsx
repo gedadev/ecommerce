@@ -3,6 +3,7 @@ import { TiShoppingCart } from "react-icons/ti";
 import { Link } from "react-router-dom";
 import useCart from "../hooks/useCart";
 import { useState } from "react";
+import { LoginModal } from "./LoginModal";
 
 export default function Navbar() {
   const { cart } = useCart();
@@ -37,27 +38,5 @@ export default function Navbar() {
         </Link>
       </ul>
     </nav>
-  );
-}
-
-function LoginModal() {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
-
-  return (
-    <div className="login-modal">
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="username">Username:</label>
-          <input type="text" id="username" name="username" />
-        </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input type="password" id="password" name="password" />
-        </div>
-        <button>Login</button>
-      </form>
-    </div>
   );
 }
