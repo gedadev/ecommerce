@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { serverURL } from "../utils/main";
+import { authService } from "../utils/main";
 
 export const CustomerContext = createContext();
 
@@ -9,21 +9,16 @@ export default function CustomerProvider({ children }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
-  const authUser = (user) => {
+  const authUser = async (credentials) => {
     try {
-      fetch(`${serverURL}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(user),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          setCustomer(data.user);
-          setToken(data.token);
-          setIsLoggedIn(true);
-        });
+      const { user, token } = await authService(credentials);
+      if (user && token) {
+        setCustomer(user);
+        setToken(token);
+        setIsLoggedIn(true);
+      } else {
+        throw new Error("Invalid credentials");
+      }
     } catch (error) {
       setErrorMsg(error.message);
       setIsLoggedIn(false);
