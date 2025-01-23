@@ -14,6 +14,10 @@
   gap: 2rem;
 }
 
+p {
+  cursor: default;
+}
+
 .login-link {
   cursor: pointer;
   position: relative;
@@ -29,6 +33,7 @@
   border-radius: 0.4rem;
   padding: 1.5rem 1rem;
   font-size: 0.8rem;
+  cursor: auto;
 }
 
 .login-modal form {
@@ -48,6 +53,15 @@
   border: 1px solid rgba(120, 120, 120, 0.4);
   border-radius: 0.3rem;
   padding: 0.2rem 0.5rem;
+}
+
+.login-modal span {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.login-modal span:hover {
+  text-shadow: 0 0 1px var(--dark-color);
 }
 
 .cart-icon {
