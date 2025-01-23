@@ -24,16 +24,21 @@ export default function CustomerProvider({ children }) {
           setToken(data.token);
           setIsLoggedIn(true);
         });
-      throw new Error("Error");
     } catch (error) {
       setErrorMsg(error.message);
       setIsLoggedIn(false);
     }
   };
 
+  const logout = () => {
+    setCustomer(null);
+    setToken(null);
+    setIsLoggedIn(false);
+  };
+
   return (
     <CustomerContext.Provider
-      value={{ authUser, isLoggedIn, customer, token, errorMsg }}
+      value={{ authUser, isLoggedIn, customer, token, errorMsg, logout }}
     >
       {children}
     </CustomerContext.Provider>
