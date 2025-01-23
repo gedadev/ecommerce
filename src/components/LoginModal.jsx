@@ -1,5 +1,6 @@
 import { useState } from "react";
 import useCustomer from "../hooks/useCustomer";
+import { Link } from "react-router-dom";
 import { FaWindowClose } from "react-icons/fa";
 
 export function LoginModal({ handleModal }) {
@@ -51,14 +52,16 @@ export function LoginModal({ handleModal }) {
   );
 }
 
-function CustomerModal() {
+function CustomerModal({ handleModal }) {
   const { customer, logout } = useCustomer();
 
   return (
     <div className="customer-modal">
       {customer && <p>Welcome, {customer.username}</p>}
       <span></span>
-      <h3>My Profile</h3>
+      <Link to={"profile/"} onClick={handleModal}>
+        <h3>My Profile</h3>
+      </Link>
       <button onClick={logout}>Logout</button>
     </div>
   );

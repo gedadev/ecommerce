@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Products from "./pages/Products";
 import Cart from "./pages/Cart";
 import ProductDetail from "./pages/ProductDetail";
+import Profile from "./pages/Profile";
 
 export default function Router() {
   const router = createBrowserRouter([
@@ -24,8 +25,8 @@ export default function Router() {
           element: <ProductDetail />,
         },
         {
-          path: "/login",
-          element: <></>,
+          path: "/profile",
+          element: <Profile />,
         },
         {
           path: "/cart",
