@@ -4,10 +4,12 @@ import { Link } from "react-router-dom";
 import useCart from "../hooks/useCart";
 import { useState } from "react";
 import { LoginModal } from "./LoginModal";
+import useCustomer from "../hooks/useCustomer";
 
 export default function Navbar() {
   const { cart } = useCart();
   const [activeModal, setActiveModal] = useState(false);
+  const { isLoggedIn } = useCustomer();
 
   const handleModal = () => {
     setActiveModal(!activeModal);
@@ -25,7 +27,7 @@ export default function Navbar() {
           <li>Shop Now</li>
         </Link>
         <div className="login-link">
-          <li onClick={handleModal}>Login</li>
+          <li onClick={handleModal}>{isLoggedIn ? "Welcome" : "Login"}</li>
           {activeModal && <LoginModal />}
         </div>
         <Link to={`cart/`}>
