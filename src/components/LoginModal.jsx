@@ -6,7 +6,7 @@ import { FaWindowClose } from "react-icons/fa";
 export function LoginModal({ handleModal }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { authUser, isLoggedIn } = useCustomer();
+  const { authUser, isLoggedIn, errorMsg } = useCustomer();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -43,6 +43,7 @@ export function LoginModal({ handleModal }) {
             />
           </div>
           <button>Login</button>
+          <p className="error-msg">{errorMsg && errorMsg}</p>
           <p>
             New customer? <span>Click here!</span>
           </p>

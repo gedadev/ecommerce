@@ -10,17 +10,16 @@ export default function CustomerProvider({ children }) {
   const [errorMsg, setErrorMsg] = useState("");
 
   const authUser = async (credentials) => {
+    setErrorMsg("");
     try {
       const { user, token } = await authService(credentials);
       if (user && token) {
         setCustomer(user);
         setToken(token);
         setIsLoggedIn(true);
-      } else {
-        throw new Error("Invalid credentials");
       }
-    } catch (error) {
-      setErrorMsg(error.message);
+    } catch {
+      setErrorMsg("Invalid username or password");
       setIsLoggedIn(false);
     }
   };
@@ -33,7 +32,14 @@ export default function CustomerProvider({ children }) {
 
   return (
     <CustomerContext.Provider
-      value={{ authUser, isLoggedIn, customer, token, errorMsg, logout }}
+      value={{
+        authUser,
+        isLoggedIn,
+        customer,
+        token,
+        errorMsg,
+        logout,
+      }}
     >
       {children}
     </CustomerContext.Provider>

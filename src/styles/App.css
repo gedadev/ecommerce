@@ -18,6 +18,10 @@ p {
   cursor: default;
 }
 
+.error-msg {
+  color: var(--error-color);
+}
+
 .cart-icon {
   height: 100%;
   display: flex;
