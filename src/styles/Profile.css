@@ -38,3 +38,9 @@
 .profile-menu > li:hover {
   color: var(--lightBlue-color);
 }
+
+.profile-info div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
