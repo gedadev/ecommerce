@@ -5,7 +5,12 @@ import Products from "./pages/Products";
 import Cart from "./pages/Cart";
 import ProductDetail from "./pages/ProductDetail";
 import Profile from "./pages/Profile";
-import { ProfileInfo } from "./components/ProfileSection";
+import {
+  Addresses,
+  Orders,
+  PaymentMethods,
+  ProfileInfo,
+} from "./components/ProfileSection";
 
 export default function Router() {
   const router = createBrowserRouter([
@@ -30,9 +35,9 @@ export default function Router() {
           element: <Profile />,
           children: [
             { path: "info", element: <ProfileInfo /> },
-            { path: "orders", element: <>orders</> },
-            { path: "payments", element: <>payments</> },
-            { path: "addresses", element: <>addresses</> },
+            { path: "orders", element: <Orders /> },
+            { path: "payments", element: <PaymentMethods /> },
+            { path: "addresses", element: <Addresses /> },
           ],
         },
         {

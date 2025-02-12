@@ -65,3 +65,64 @@ export function ProfileInfo() {
     </section>
   );
 }
+
+export function Orders() {
+  const { orders } = useCustomer();
+
+  return (
+    <section className="profile-info">
+      {orders && (
+        <>
+          {orders.map((order) => (
+            <div key={order.id}>
+              <p>Order ID: {order.id}</p>
+              <p>Date: {order.date}</p>
+              <p>Items: {order.items.length}</p>
+              <p>Total: ${order.total}</p>
+            </div>
+          ))}
+        </>
+      )}
+    </section>
+  );
+}
+
+export function PaymentMethods() {
+  const { paymentMethods } = useCustomer();
+
+  return (
+    <section className="profile-info">
+      {paymentMethods && (
+        <>
+          {paymentMethods.map((payment) => (
+            <div key={payment.id}>
+              <p>Card: {payment.number}</p>
+              <p>Expires: {payment.expiration}</p>
+            </div>
+          ))}
+        </>
+      )}
+    </section>
+  );
+}
+
+export function Addresses() {
+  const { addresses } = useCustomer();
+
+  return (
+    <section className="profile-info">
+      {addresses && (
+        <>
+          {addresses.map((address) => (
+            <div key={address.id}>
+              <p>Address: {address.street}</p>
+              <p>City: {address.city}</p>
+              <p>State: {address.state}</p>
+              <p>Zip: {address.zip}</p>
+            </div>
+          ))}
+        </>
+      )}
+    </section>
+  );
+}
