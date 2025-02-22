@@ -44,3 +44,47 @@
   flex-direction: column;
   gap: 0.8rem;
 }
+
+/* payment methods section */
+
+.profile-payments {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.card {
+  height: 200px;
+  width: 317px;
+  border-radius: 6%;
+  background-color: antiquewhite;
+}
+
+.card-list {
+  width: 100%;
+}
+
+.card-item {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+}
+
+.card-item:hover {
+  scale: 1.01;
+}
+
+.payment-logo {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
