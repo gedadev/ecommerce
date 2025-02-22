@@ -25,6 +25,17 @@ export default function CustomerProvider({ children }) {
     fetchUserData();
   }, [isLoggedIn, token]);
 
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const customer = localStorage.getItem("customer");
+
+    if (token && customer) {
+      setToken(token);
+      setCustomer(JSON.parse(customer));
+      setIsLoggedIn(true);
+    }
+  }, []);
+
   const authUser = async (credentials) => {
     setErrorMsg("");
     try {
@@ -33,6 +44,9 @@ export default function CustomerProvider({ children }) {
         setCustomer(user);
         setToken(token);
         setIsLoggedIn(true);
+
+        localStorage.setItem("token", token);
+        localStorage.setItem("customer", JSON.stringify(user));
       }
     } catch {
       setErrorMsg("Invalid username or password");
