@@ -1,6 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import useCustomer from "../hooks/useCustomer";
 
+export { PaymentMethods } from "./PaymentMethods";
+
 export function ProfileHeader() {
   const { customer } = useCustomer();
 
@@ -79,25 +81,6 @@ export function Orders() {
               <p>Date: {order.date}</p>
               <p>Items: {order.items.length}</p>
               <p>Total: ${order.total}</p>
-            </div>
-          ))}
-        </>
-      )}
-    </section>
-  );
-}
-
-export function PaymentMethods() {
-  const { paymentMethods } = useCustomer();
-
-  return (
-    <section className="profile-info">
-      {paymentMethods && (
-        <>
-          {paymentMethods.map((payment) => (
-            <div key={payment.id}>
-              <p>Card: {payment.number}</p>
-              <p>Expires: {payment.expiration}</p>
             </div>
           ))}
         </>
