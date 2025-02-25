@@ -1,5 +1,8 @@
 import { createContext, useEffect, useState } from "react";
 import { authService, getUserData } from "../utils/main";
+import { BiLogoVisa } from "react-icons/bi";
+import { BiLogoMastercard } from "react-icons/bi";
+import { CiCreditCard1 } from "react-icons/ci";
 
 export const CustomerContext = createContext();
 
@@ -60,6 +63,25 @@ export default function CustomerProvider({ children }) {
     setIsLoggedIn(false);
   };
 
+  const selectProviderLogo = (provider) => {
+    switch (provider) {
+      case "visa":
+        return <BiLogoVisa />;
+      case "mastercard":
+        return <BiLogoMastercard />;
+      default:
+        return <CiCreditCard1 />;
+    }
+  };
+
+  const hideCardNumber = (number) => {
+    const ending = number.slice(-4);
+    const hidden = "•".repeat(12).concat(ending);
+    const formattedHidden = hidden.match(/.{1,4}/g).join(" ");
+
+    return { formattedHidden, ending };
+  };
+
   return (
     <CustomerContext.Provider
       value={{
@@ -72,6 +94,8 @@ export default function CustomerProvider({ children }) {
         orders,
         addresses,
         paymentMethods,
+        selectProviderLogo,
+        hideCardNumber,
       }}
     >
       {children}
