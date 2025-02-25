@@ -42,21 +42,11 @@ export function PaymentMethods() {
     <section className="profile-payments">
       {paymentMethods && selectedCard && (
         <>
-          <div className="card">
-            <div className="bank">
-              <span>{selectedCard.bank}</span>
-            </div>
-            <div className="owner-data">
-              <span>{hideNumber(selectedCard.number).formattedHidden}</span>
-              <span>{selectedCard.name}</span>
-            </div>
-            <div className="provider-info">
-              <span>{selectedCard.type}</span>
-              <span className="provider-logo">
-                {selectProviderLogo(formatValue(selectedCard.provider))}
-              </span>
-            </div>
-          </div>
+          <SelectedCard
+            selectedCard={selectedCard}
+            selectProviderLogo={selectProviderLogo}
+            hideNumber={hideNumber}
+          />
           <div className="card-list">
             {paymentMethods.map((payment) => (
               <CardList
@@ -85,6 +75,26 @@ function CardList({ payment, selectProviderLogo, hideNumber, selectCard }) {
         <p>
           {payment.bank} {payment.type}
         </p>
+      </div>
+    </div>
+  );
+}
+
+function SelectedCard({ selectedCard, selectProviderLogo, hideNumber }) {
+  return (
+    <div className="card">
+      <div className="bank">
+        <span>{selectedCard.bank}</span>
+      </div>
+      <div className="owner-data">
+        <span>{hideNumber(selectedCard.number).formattedHidden}</span>
+        <span>{selectedCard.name}</span>
+      </div>
+      <div className="provider-info">
+        <span>{selectedCard.type}</span>
+        <span className="provider-logo">
+          {selectProviderLogo(formatValue(selectedCard.provider))}
+        </span>
       </div>
     </div>
   );
