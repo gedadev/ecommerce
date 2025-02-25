@@ -1,28 +1,20 @@
 import { BiLogoMastercard as Mastercard } from "react-icons/bi";
 import { BiLogoVisa as Visa } from "react-icons/bi";
+import { CiCreditCard1 } from "react-icons/ci";
 import useCustomer from "../hooks/useCustomer";
 import { formatValue } from "../utils/main";
+import { useEffect, useState } from "react";
 
 export function PaymentMethods() {
   const { paymentMethods } = useCustomer();
+  const [selectedCard, setSelectedCard] = useState(null);
 
-  return (
-    <section className="profile-payments">
-      {paymentMethods && (
-        <>
-          <div className="card"></div>
-          <div className="card-list">
-            {paymentMethods.map((payment) => (
-              <CardList payment={payment} key={payment.id} />
-            ))}
-          </div>
-        </>
-      )}
-    </section>
-  );
-}
+  useEffect(() => {
+    if (!paymentMethods) return;
 
-function CardList({ payment }) {
+    setSelectedCard(paymentMethods.find((card) => card.default));
+  }, [paymentMethods]);
+
   const selectProviderLogo = (provider) => {
     switch (provider) {
       case "visa":
@@ -30,7 +22,7 @@ function CardList({ payment }) {
       case "mastercard":
         return <Mastercard />;
       default:
-        break;
+        return <CiCreditCard1 />;
     }
   };
 
@@ -42,11 +34,49 @@ function CardList({ payment }) {
     return { formattedHidden, ending };
   };
 
-    return hidden.match(/.{1,4}/g).join(" ");
+  const selectCard = (card) => {
+    setSelectedCard(card);
   };
 
   return (
-    <div className="card-item">
+    <section className="profile-payments">
+      {paymentMethods && selectedCard && (
+        <>
+          <div className="card">
+            <div className="bank">
+              <span>{selectedCard.bank}</span>
+            </div>
+            <div className="owner-data">
+              <span>{hideNumber(selectedCard.number).formattedHidden}</span>
+              <span>{selectedCard.name}</span>
+            </div>
+            <div className="provider-info">
+              <span>{selectedCard.type}</span>
+              <span className="provider-logo">
+                {selectProviderLogo(formatValue(selectedCard.provider))}
+              </span>
+            </div>
+          </div>
+          <div className="card-list">
+            {paymentMethods.map((payment) => (
+              <CardList
+                key={payment.id}
+                payment={payment}
+                selectProviderLogo={selectProviderLogo}
+                hideNumber={hideNumber}
+                selectCard={selectCard}
+              />
+            ))}
+          </div>
+        </>
+      )}
+    </section>
+  );
+}
+
+function CardList({ payment, selectProviderLogo, hideNumber, selectCard }) {
+  return (
+    <div className="card-item" onClick={() => selectCard(payment)}>
       <div className="payment-logo">
         {selectProviderLogo(formatValue(payment.provider))}
       </div>
@@ -56,10 +86,6 @@ function CardList({ payment }) {
           {payment.bank} {payment.type}
         </p>
       </div>
-      {/* <p>{payment.name}</p>
-        <p>{payment.number}</p>
-      <p>{payment.default ? "default" : ""}</p>
-      <p>{payment.type}</p> */}
     </div>
   );
 }
