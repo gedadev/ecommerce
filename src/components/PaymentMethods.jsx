@@ -37,6 +37,10 @@ function CardList({ payment }) {
   const hideNumber = (number) => {
     const ending = number.slice(-4);
     const hidden = "•".repeat(12).concat(ending);
+    const formattedHidden = hidden.match(/.{1,4}/g).join(" ");
+
+    return { formattedHidden, ending };
+  };
 
     return hidden.match(/.{1,4}/g).join(" ");
   };
@@ -47,7 +51,7 @@ function CardList({ payment }) {
         {selectProviderLogo(formatValue(payment.provider))}
       </div>
       <div>
-        <p>{hideNumber(payment.number)}</p>
+        <p>Ending: {hideNumber(payment.number).ending}</p>
         <p>
           {payment.bank} {payment.type}
         </p>
