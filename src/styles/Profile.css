@@ -58,8 +58,20 @@
   height: 200px;
   width: 317px;
   border-radius: 6%;
-  background-color: antiquewhite;
   position: relative;
+  transition: all 0.5s ease;
+  background-color: rgb(79, 81, 87);
+  color: rgb(225, 225, 225);
+}
+
+.card.visa {
+  background-color: rgb(0, 52, 193);
+  color: rgb(225, 225, 225);
+}
+
+.card.mastercard {
+  background-color: rgb(225, 225, 225);
+  color: var(--dark-color);
 }
 
 .card div {
