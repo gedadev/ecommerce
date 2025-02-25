@@ -59,6 +59,36 @@
   width: 317px;
   border-radius: 6%;
   background-color: antiquewhite;
+  position: relative;
+}
+
+.card div {
+  display: flex;
+  flex-direction: column;
+}
+
+.owner-data {
+  font-size: 0.9rem;
+  position: absolute;
+  bottom: 30px;
+  left: 20px;
+}
+
+.provider-info {
+  font-size: 0.6rem;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
+}
+
+.provider-logo {
+  font-size: 2rem;
+}
+
+.bank {
+  padding: 1rem;
 }
 
 .card-list {
