@@ -9,7 +9,8 @@ export function PaymentMethods() {
   useEffect(() => {
     if (!paymentMethods) return;
 
-    setSelectedCard(paymentMethods.find((card) => card.default));
+    const foundDefaultCard = paymentMethods.find((card) => card.default);
+    selectCard(foundDefaultCard);
   }, [paymentMethods]);
 
   const selectCard = (card) => {
