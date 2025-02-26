@@ -42,6 +42,7 @@ function CardList({ payment, selectCard }) {
 
   return (
     <div className="card-item" onClick={() => selectCard(payment)}>
+      {payment.default && <div className="default-flag">Default</div>}
       <div className="payment-logo">
         {selectProviderLogo(formatValue(payment.provider))}
       </div>
@@ -68,6 +69,7 @@ function SelectedCard({ selectedCard }) {
       key={animationKey}
       className={`card ${formatValue(selectedCard.provider)}`}
     >
+      {selectedCard.default && <div className="default-flag">Default</div>}
       <div className="bank">
         <span>{selectedCard.bank}</span>
       </div>
