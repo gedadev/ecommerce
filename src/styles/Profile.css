@@ -170,6 +170,40 @@
   cursor: pointer;
 }
 
+.options-menu {
+  position: absolute;
+  top: 0;
+  right: 50px;
+  width: max-content;
+  padding: 0.5rem;
+  font-size: 0.7rem;
+  background-color: var(--ashGray-color);
+  border-radius: 0.4rem;
+  transition: all 0.3s ease;
+}
+
+.options-menu ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.delete-card {
+  color: var(--error-color);
+}
+
+.options-menu li {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.options-menu li:hover {
+  transform: scale(1.05);
+}
+
 .card-item:hover .card-settings {
   opacity: 1;
 }
