@@ -4,10 +4,12 @@
   display: grid;
   grid-template: 4.5rem 1fr / 14rem 1fr;
   gap: 1rem 2rem;
+  cursor: default;
 }
 
 .profile-section p {
   font-size: 0.9rem;
+  pointer-events: none;
 }
 
 .profile-section header {
@@ -128,10 +130,6 @@
 
 .card-list {
   width: 100%;
-}
-
-.card-list p {
-  pointer-events: none;
 }
 
 .card-item {
