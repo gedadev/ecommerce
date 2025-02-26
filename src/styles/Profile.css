@@ -107,6 +107,10 @@
   width: 100%;
 }
 
+.card-list p {
+  pointer-events: none;
+}
+
 .card-item {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   padding: 1rem;
