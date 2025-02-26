@@ -28,6 +28,7 @@ export function PaymentMethods() {
                 key={payment.id}
                 payment={payment}
                 selectCard={selectCard}
+                selectedCard={selectedCard}
               />
             ))}
           </div>
@@ -37,11 +38,26 @@ export function PaymentMethods() {
   );
 }
 
-function CardList({ payment, selectCard }) {
+function CardList({ payment, selectCard, selectedCard }) {
   const { selectProviderLogo, hideCardNumber } = useCustomer();
+  const [isSelected, setIsSelected] = useState(false);
+
+  useEffect(() => {
+    setIsSelected(false);
+
+    if (
+      hideCardNumber(payment.number).ending ===
+      hideCardNumber(selectedCard.number).ending
+    ) {
+      setIsSelected(true);
+    }
+  }, [payment, selectedCard, hideCardNumber]);
 
   return (
-    <div className="card-item" onClick={() => selectCard(payment)}>
+    <div
+      className={`card-item ${isSelected ? "selected" : ""}`}
+      onClick={() => selectCard(payment)}
+    >
       {payment.default && <div className="default-flag">Default</div>}
       <div className="payment-logo">
         {selectProviderLogo(formatValue(payment.provider))}
