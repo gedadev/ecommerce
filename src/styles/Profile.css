@@ -115,7 +115,7 @@
   padding: 1rem;
 }
 
-.default-flag {
+.flag {
   position: absolute;
   right: 0;
   top: 15px;
@@ -141,20 +141,41 @@
   display: flex;
   gap: 1.5rem;
   align-items: center;
-  cursor: pointer;
   transition: all 0.2s ease-in;
 }
 
 .card-item.selected {
   background-color: rgba(0, 0, 0, 0.1);
-  pointer-events: none;
 }
 
-.card-item .default-flag {
+.card-info {
+  cursor: pointer;
+  width: 80%;
+}
+
+.card-item .flag {
   top: 50%;
   transform: translateY(-50%);
   background-color: transparent;
   opacity: 0.7;
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.card-settings {
+  font-size: 1.2rem;
+  opacity: 0;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.card-item:hover .card-settings {
+  opacity: 1;
+}
+
+.card-settings:hover {
+  transform: rotate(20deg);
 }
 
 .card-item:hover {

@@ -1,6 +1,7 @@
 import useCustomer from "../hooks/useCustomer";
 import { formatValue } from "../utils/main";
 import { useEffect, useState } from "react";
+import { IoSettings } from "react-icons/io5";
 
 export function PaymentMethods() {
   const { paymentMethods } = useCustomer();
@@ -54,15 +55,15 @@ function CardList({ payment, selectCard, selectedCard }) {
   }, [payment, selectedCard, hideCardNumber]);
 
   return (
-    <div
-      className={`card-item ${isSelected ? "selected" : ""}`}
-      onClick={() => selectCard(payment)}
-    >
-      {payment.default && <div className="default-flag">Default</div>}
+    <div className={`card-item ${isSelected ? "selected" : ""}`}>
+      <div className="flag">
+        {payment.default && <div className="">Default</div>}
+        <IoSettings className="card-settings" />
+      </div>
       <div className="payment-logo">
         {selectProviderLogo(formatValue(payment.provider))}
       </div>
-      <div>
+      <div onClick={() => selectCard(payment)} className="card-info">
         <p>Ending: {hideCardNumber(payment.number).ending}</p>
         <p>
           {payment.bank} {payment.type}
@@ -85,7 +86,7 @@ function SelectedCard({ selectedCard }) {
       key={animationKey}
       className={`card ${formatValue(selectedCard.provider)}`}
     >
-      {selectedCard.default && <div className="default-flag">Default</div>}
+      {selectedCard.default && <div className="flag">Default</div>}
       <div className="bank">
         <span>{selectedCard.bank}</span>
       </div>
