@@ -56,9 +56,17 @@ function CardList({ payment, selectCard }) {
 
 function SelectedCard({ selectedCard }) {
   const { selectProviderLogo, hideCardNumber } = useCustomer();
+  const [animationKey, setAnimationKey] = useState(0);
+
+  useEffect(() => {
+    setAnimationKey((prevKey) => prevKey + 1);
+  }, [selectedCard]);
 
   return (
-    <div className={`card ${formatValue(selectedCard.provider)}`}>
+    <div
+      key={animationKey}
+      className={`card ${formatValue(selectedCard.provider)}`}
+    >
       <div className="bank">
         <span>{selectedCard.bank}</span>
       </div>
