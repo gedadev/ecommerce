@@ -142,6 +142,17 @@
   transition: all 0.2s ease-in;
 }
 
+.card-item button {
+  background-color: rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.card-item button > svg {
+  font-size: 1rem;
+}
+
 .card-item.selected {
   background-color: rgba(0, 0, 0, 0.1);
 }

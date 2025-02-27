@@ -1,8 +1,7 @@
 import useCustomer from "../hooks/useCustomer";
 import { formatValue } from "../utils/main";
 import { useEffect, useState } from "react";
-import { IoSettings } from "react-icons/io5";
-import { FaRegTrashAlt } from "react-icons/fa";
+import { CardList, NewCard } from "./CardList";
 
 export function PaymentMethods() {
   const { paymentMethods } = useCustomer();
@@ -33,64 +32,11 @@ export function PaymentMethods() {
                 selectedCard={selectedCard}
               />
             ))}
+            <NewCard />
           </div>
         </>
       )}
     </section>
-  );
-}
-
-function CardList({ payment, selectCard, selectedCard }) {
-  const { selectProviderLogo, hideCardNumber } = useCustomer();
-  const [isSelected, setIsSelected] = useState(false);
-  const [activeOptions, setActiveOptions] = useState(false);
-
-  useEffect(() => {
-    setIsSelected(false);
-
-    if (
-      hideCardNumber(payment.number).ending ===
-      hideCardNumber(selectedCard.number).ending
-    ) {
-      setIsSelected(true);
-    }
-  }, [payment, selectedCard, hideCardNumber]);
-
-  return (
-    <div className={`card-item ${isSelected ? "selected" : ""}`}>
-      <div className="flag">
-        {payment.default ? (
-          <div className="">Default</div>
-        ) : (
-          <>
-            <IoSettings
-              className="card-settings"
-              onClick={() => setActiveOptions(!activeOptions)}
-            />
-            <div
-              className="options-menu"
-              style={{ opacity: `${activeOptions ? "1" : "0"}` }}
-            >
-              <ul>
-                <li className="delete-card">
-                  Delete <FaRegTrashAlt />
-                </li>
-                {!payment.default && <li>Make Default</li>}
-              </ul>
-            </div>
-          </>
-        )}
-      </div>
-      <div className="payment-logo">
-        {selectProviderLogo(formatValue(payment.provider))}
-      </div>
-      <div onClick={() => selectCard(payment)} className="card-info">
-        <p>Ending: {hideCardNumber(payment.number).ending}</p>
-        <p>
-          {payment.bank} {payment.type}
-        </p>
-      </div>
-    </div>
   );
 }
 
