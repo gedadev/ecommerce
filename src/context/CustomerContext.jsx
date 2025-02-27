@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import { authService, getUserData } from "../utils/main";
 import { BiLogoVisa } from "react-icons/bi";
 import { BiLogoMastercard } from "react-icons/bi";
+import { FaCcAmex } from "react-icons/fa6";
 import { CiCreditCard1 } from "react-icons/ci";
 
 export const CustomerContext = createContext();
@@ -69,6 +70,8 @@ export default function CustomerProvider({ children }) {
         return <BiLogoVisa />;
       case "mastercard":
         return <BiLogoMastercard />;
+      case "amex":
+        return <FaCcAmex />;
       default:
         return <CiCreditCard1 />;
     }
