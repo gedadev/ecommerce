@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import useCustomer from "../hooks/useCustomer";
+import { formatValue } from "../utils/main";
 import { IoSettings } from "react-icons/io5";
 import { FaRegTrashAlt } from "react-icons/fa";
-import { formatValue } from "../utils/main";
-import { CiCreditCard1 } from "react-icons/ci";
 import { MdOutlineAddCard } from "react-icons/md";
 
 export function CardList({ payment, selectCard, selectedCard }) {
@@ -39,10 +38,7 @@ export function CardList({ payment, selectCard, selectedCard }) {
 
 export function NewCard() {
   return (
-    <div className="card-item">
-      <div className="payment-logo">
-        <CiCreditCard1 />
-      </div>
+    <div className="add-card">
       <button>
         Add card <MdOutlineAddCard />
       </button>
