@@ -79,10 +79,11 @@ export default function CustomerProvider({ children }) {
 
   const hideCardNumber = (number) => {
     const ending = number.slice(-4);
+    const cardBin = number.slice(0, 8);
     const hidden = "•".repeat(12).concat(ending);
     const formattedHidden = hidden.match(/.{1,4}/g).join(" ");
 
-    return { formattedHidden, ending };
+    return { formattedHidden, ending, cardBin };
   };
 
   return (
