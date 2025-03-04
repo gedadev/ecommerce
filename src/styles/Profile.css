@@ -228,7 +228,7 @@
   padding: 1rem;
 }
 
-.add-card button {
+.profile-payments button {
   background-color: rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
@@ -237,6 +237,61 @@
   padding: 0.8rem 1.2rem;
 }
 
-.add-card button > svg {
+.profile-payments button > svg {
   font-size: 1rem;
+}
+
+.add-card-button {
+  background-color: var(--jasmine-color) !important;
+}
+
+.card-type-toggle {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 0.8rem;
+  width: fit-content;
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  position: relative;
+}
+
+.card-type-toggle input {
+  display: none;
+}
+
+.card-type-toggle label {
+  cursor: pointer;
+  padding: 0.3rem 0.5rem;
+  z-index: 1;
+}
+
+.toggle-slider {
+  transition: all 0.6s ease;
+  background-color: var(--lightBlue-color);
+  border-radius: 5px;
+  height: 100%;
+  width: 50%;
+  position: absolute;
+}
+
+.new-card-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.new-card-form input {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 0.4rem 0.8rem;
+}
+
+.new-card-form div:nth-child(n + 2) {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.form-buttons {
+  justify-content: space-around !important;
 }
