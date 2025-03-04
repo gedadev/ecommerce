@@ -1,11 +1,12 @@
 import useCustomer from "../hooks/useCustomer";
 import { formatValue } from "../utils/main";
 import { useEffect, useState } from "react";
-import { CardList, NewCard } from "./CardList";
+import { CardList, NewCard, NewCardForm } from "./CardList";
 
 export function PaymentMethods() {
   const { paymentMethods } = useCustomer();
   const [selectedCard, setSelectedCard] = useState(null);
+  const [activeForm, setActiveForm] = useState(false);
 
   useEffect(() => {
     if (!paymentMethods) return;
@@ -18,22 +19,32 @@ export function PaymentMethods() {
     setSelectedCard(card);
   };
 
+  const toggleForm = () => {
+    setActiveForm(!activeForm);
+  };
+
   return (
     <section className="profile-payments">
-      {paymentMethods && selectedCard && (
+      {activeForm ? (
+        <NewCardForm toggleForm={toggleForm} />
+      ) : (
         <>
-          <SelectedCard selectedCard={selectedCard} />
-          <div className="card-list">
-            {paymentMethods.map((payment) => (
-              <CardList
-                key={payment.id}
-                payment={payment}
-                selectCard={selectCard}
-                selectedCard={selectedCard}
-              />
-            ))}
-            <NewCard />
-          </div>
+          {paymentMethods && selectedCard && (
+            <>
+              <SelectedCard selectedCard={selectedCard} />
+              <div className="card-list">
+                {paymentMethods.map((payment) => (
+                  <CardList
+                    key={payment.id}
+                    payment={payment}
+                    selectCard={selectCard}
+                    selectedCard={selectedCard}
+                  />
+                ))}
+                <NewCard toggleForm={toggleForm} />
+              </div>
+            </>
+          )}
         </>
       )}
     </section>
