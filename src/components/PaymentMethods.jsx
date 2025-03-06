@@ -1,7 +1,9 @@
 import useCustomer from "../hooks/useCustomer";
 import { formatValue } from "../utils/main";
 import { useEffect, useState } from "react";
-import { CardList, NewCard, NewCardForm } from "./CardList";
+import { CardList } from "./CardList";
+import { NewCardForm } from "./NewCardForm";
+import { MdOutlineAddCard } from "react-icons/md";
 
 export function PaymentMethods() {
   const { paymentMethods } = useCustomer();
@@ -41,7 +43,11 @@ export function PaymentMethods() {
                     selectedCard={selectedCard}
                   />
                 ))}
-                <NewCard toggleForm={toggleForm} />
+                <div className="add-card" onClick={toggleForm}>
+                  <button>
+                    Add card <MdOutlineAddCard />
+                  </button>
+                </div>
               </div>
             </>
           )}
