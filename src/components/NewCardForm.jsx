@@ -46,7 +46,9 @@ export function NewCardForm({ toggleForm }) {
   };
 
   const handleValues = (e) => {
-    console.log(e);
+    const { id, value } = e.target;
+
+    setCardData({ ...cardData, [id]: value });
   };
 
   return (
