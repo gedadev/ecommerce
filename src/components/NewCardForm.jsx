@@ -1,13 +1,18 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FcCancel } from "react-icons/fc";
 import { MdOutlineAddCard } from "react-icons/md";
+import { formatText } from "../utils/main";
 
 export function NewCardForm({ toggleForm }) {
   const toggleRef = useRef(null);
+  const [cardData, setCardData] = useState({
+    name: "",
+    number: "",
+    expiration: "",
+  });
 
   useEffect(() => {
     toggleRef.current?.click();
-    console.log(toggleRef.current);
   }, []);
 
   const toggleType = (e) => {
@@ -40,6 +45,10 @@ export function NewCardForm({ toggleForm }) {
     e.preventDefault();
   };
 
+  const handleValues = (e) => {
+    console.log(e);
+  };
+
   return (
     <form className="new-card-form" onSubmit={handleNewCard}>
       <div onClick={toggleType} className="card-type-toggle">
@@ -51,18 +60,14 @@ export function NewCardForm({ toggleForm }) {
         <input type="radio" name="type" id="debit" />
         <span className="toggle-slider"></span>
       </div>
-      <div>
-        <label htmlFor="name">* Name:</label>
-        <input type="text" id="name" />
-      </div>
-      <div>
-        <label htmlFor="number">* Number:</label>
-        <input type="text" id="number" />
-      </div>
-      <div>
-        <label htmlFor="expiration">* Expiration:</label>
-        <input type="text" id="expiration" />
-      </div>
+      {Object.entries(cardData).map(([name, value], i) => (
+        <FormInput
+          key={i}
+          name={name}
+          value={value}
+          handleValues={handleValues}
+        />
+      ))}
       <div className="form-buttons">
         <button onClick={toggleForm} type="button">
           Cancel <FcCancel />
@@ -72,5 +77,14 @@ export function NewCardForm({ toggleForm }) {
         </button>
       </div>
     </form>
+  );
+}
+
+function FormInput({ name, value, handleValues }) {
+  return (
+    <div>
+      <label htmlFor={name}>* {formatText(name)}:</label>
+      <input type="text" id={name} value={value} onChange={handleValues} />
+    </div>
   );
 }
