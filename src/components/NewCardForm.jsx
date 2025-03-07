@@ -48,6 +48,34 @@ export function NewCardForm({ toggleForm }) {
   const handleValues = (e) => {
     const { id, value } = e.target;
 
+    if (id === "number") {
+      const cardNumber = value.split(" ").join("");
+      if (cardNumber.length > 16 || !/^\d*$/.test(cardNumber)) return;
+
+      const formatted = cardNumber ? cardNumber.match(/.{1,4}/g).join(" ") : "";
+      setCardData({ ...cardData, number: formatted });
+      return;
+    }
+
+    if (id === "expiration") {
+      const expirationDate = value.split("/").join("");
+      if (expirationDate.length > 4 || !/^\d*$/.test(expirationDate)) return;
+
+      const formatted = expirationDate
+        ? expirationDate.match(/.{1,2}/g).join("/")
+        : "";
+      setCardData({ ...cardData, expiration: formatted });
+      return;
+    }
+
+    if (id === "name") {
+      const formattedName = value.toUpperCase();
+      if (!/^[A-Z Ñ]*$/.test(formattedName)) return;
+
+      setCardData({ ...cardData, name: formattedName });
+      return;
+    }
+
     setCardData({ ...cardData, [id]: value });
   };
 

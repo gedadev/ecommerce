@@ -284,6 +284,9 @@
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   padding: 0.4rem 0.8rem;
+  color: rgba(0, 0, 0, 0.7);
+  letter-spacing: 1px;
+  font-size: 0.8rem;
 }
 
 .new-card-form div:nth-child(n + 2) {
