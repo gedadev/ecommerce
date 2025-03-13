@@ -36,6 +36,8 @@ export default function useValidations() {
   const validateName = (name) => {
     if (!name) {
       return { message: "Enter your name", input: "name" };
+    } else if (name.split(" ").length === 1) {
+      return { message: "Enter your full name", input: "name" };
     } else {
       return { message: "", input: "" };
     }
