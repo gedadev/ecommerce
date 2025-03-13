@@ -293,8 +293,20 @@
   display: flex;
   justify-content: space-between;
   gap: 1rem;
+  position: relative;
 }
 
 .form-buttons {
   justify-content: space-around !important;
+}
+
+.error-msg {
+  position: absolute;
+  right: 0;
+  bottom: -21px;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
 }

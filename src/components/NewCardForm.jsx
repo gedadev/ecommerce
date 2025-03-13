@@ -10,6 +10,10 @@ export function NewCardForm({ toggleForm }) {
     number: "",
     expiration: "",
   });
+  const [error, setError] = useState({
+    message: "",
+    input: "",
+  });
 
   useEffect(() => {
     toggleRef.current?.click();
@@ -52,6 +56,12 @@ export function NewCardForm({ toggleForm }) {
       const cardNumber = value.split(" ").join("");
       if (cardNumber.length > 16 || !/^\d*$/.test(cardNumber)) return;
 
+      if (!cardNumber) {
+        setError({ message: "Enter a valid card number", input: "number" });
+      } else {
+        setError({ message: "", input: "" });
+      }
+
       const formatted = cardNumber ? cardNumber.match(/.{1,4}/g).join(" ") : "";
       setCardData({ ...cardData, number: formatted });
       return;
@@ -60,6 +70,12 @@ export function NewCardForm({ toggleForm }) {
     if (id === "expiration") {
       const expirationDate = value.split("/").join("");
       if (expirationDate.length > 4 || !/^\d*$/.test(expirationDate)) return;
+
+      if (!expirationDate) {
+        setError({ message: "Invalid date", input: "expiration" });
+      } else {
+        setError({ message: "", input: "" });
+      }
 
       const formatted = expirationDate
         ? expirationDate.match(/.{1,2}/g).join("/")
@@ -71,6 +87,12 @@ export function NewCardForm({ toggleForm }) {
     if (id === "name") {
       const formattedName = value.toUpperCase();
       if (!/^[A-Z Ñ]*$/.test(formattedName)) return;
+
+      if (!formattedName) {
+        setError({ message: "Enter your name", input: "name" });
+      } else {
+        setError({ message: "", input: "" });
+      }
 
       setCardData({ ...cardData, name: formattedName });
       return;
@@ -96,6 +118,7 @@ export function NewCardForm({ toggleForm }) {
           name={name}
           value={value}
           handleValues={handleValues}
+          error={error}
         />
       ))}
       <div className="form-buttons">
@@ -110,11 +133,14 @@ export function NewCardForm({ toggleForm }) {
   );
 }
 
-function FormInput({ name, value, handleValues }) {
+function FormInput({ name, value, handleValues, error }) {
   return (
     <div>
       <label htmlFor={name}>* {formatText(name)}:</label>
       <input type="text" id={name} value={value} onChange={handleValues} />
+      {error["input"] && error["input"] === name && (
+        <span className="error-msg">{error["message"]}</span>
+      )}
     </div>
   );
 }
