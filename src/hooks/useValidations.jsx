@@ -10,8 +10,24 @@ export default function useValidations() {
   };
 
   const validateDate = (date) => {
+    const month = date.substring(0, 2);
+    const year = date.substring(2, 4);
+
+    const isExpired = () => {
+      if (date.length === 4) {
+        const dateObj = new Date(`20${year}`, month - 1).getTime();
+
+        if (dateObj < Date.now()) return true;
+      }
+      return false;
+    };
+
     if (!date) {
       return { message: "Enter card's expiration date", input: "expiration" };
+    } else if (String(month) > 12) {
+      return { message: "Invalid date", input: "expiration" };
+    } else if (isExpired()) {
+      return { message: "Card is expired", input: "expiration" };
     } else {
       return { message: "", input: "" };
     }
