@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { FcCancel } from "react-icons/fc";
 import { MdOutlineAddCard } from "react-icons/md";
 import { formatText } from "../utils/main";
+import useValidations from "../hooks/useValidations";
 
 export function NewCardForm({ toggleForm }) {
   const toggleRef = useRef(null);
@@ -14,6 +15,7 @@ export function NewCardForm({ toggleForm }) {
     message: "",
     input: "",
   });
+  const { validateNumber, validateDate, validateName } = useValidations();
 
   useEffect(() => {
     toggleRef.current?.click();
@@ -56,11 +58,8 @@ export function NewCardForm({ toggleForm }) {
       const cardNumber = value.split(" ").join("");
       if (cardNumber.length > 16 || !/^\d*$/.test(cardNumber)) return;
 
-      if (!cardNumber) {
-        setError({ message: "Enter a valid card number", input: "number" });
-      } else {
-        setError({ message: "", input: "" });
-      }
+      const validCard = validateNumber(cardNumber);
+      setError(validCard);
 
       const formatted = cardNumber ? cardNumber.match(/.{1,4}/g).join(" ") : "";
       setCardData({ ...cardData, number: formatted });
@@ -71,11 +70,8 @@ export function NewCardForm({ toggleForm }) {
       const expirationDate = value.split("/").join("");
       if (expirationDate.length > 4 || !/^\d*$/.test(expirationDate)) return;
 
-      if (!expirationDate) {
-        setError({ message: "Invalid date", input: "expiration" });
-      } else {
-        setError({ message: "", input: "" });
-      }
+      const validDate = validateDate(expirationDate);
+      setError(validDate);
 
       const formatted = expirationDate
         ? expirationDate.match(/.{1,2}/g).join("/")
@@ -88,11 +84,8 @@ export function NewCardForm({ toggleForm }) {
       const formattedName = value.toUpperCase();
       if (!/^[A-Z Ñ]*$/.test(formattedName)) return;
 
-      if (!formattedName) {
-        setError({ message: "Enter your name", input: "name" });
-      } else {
-        setError({ message: "", input: "" });
-      }
+      const validName = validateName(formattedName);
+      setError(validName);
 
       setCardData({ ...cardData, name: formattedName });
       return;
