@@ -5,17 +5,14 @@ import { formatText } from "../utils/main";
 import useValidations from "../hooks/useValidations";
 
 export function NewCardForm({ toggleForm }) {
+  const { validateNumber, validateDate, validateName, error } =
+    useValidations();
   const toggleRef = useRef(null);
   const [cardData, setCardData] = useState({
     name: "",
     number: "",
     expiration: "",
   });
-  const [error, setError] = useState({
-    message: "",
-    input: "",
-  });
-  const { validateNumber, validateDate, validateName } = useValidations();
 
   useEffect(() => {
     toggleRef.current?.click();
@@ -58,8 +55,7 @@ export function NewCardForm({ toggleForm }) {
       const cardNumber = value.split(" ").join("");
       if (cardNumber.length > 16 || !/^\d*$/.test(cardNumber)) return;
 
-      const validCard = validateNumber(cardNumber);
-      setError(validCard);
+      validateNumber(cardNumber);
 
       const formatted = cardNumber ? cardNumber.match(/.{1,4}/g).join(" ") : "";
       setCardData({ ...cardData, number: formatted });
@@ -70,8 +66,7 @@ export function NewCardForm({ toggleForm }) {
       const expirationDate = value.split("/").join("");
       if (expirationDate.length > 4 || !/^\d*$/.test(expirationDate)) return;
 
-      const validDate = validateDate(expirationDate);
-      setError(validDate);
+      validateDate(expirationDate);
 
       const formatted = expirationDate
         ? expirationDate.match(/.{1,2}/g).join("/")
@@ -84,8 +79,7 @@ export function NewCardForm({ toggleForm }) {
       const formattedName = value.toUpperCase();
       if (!/^[A-Z Ñ]*$/.test(formattedName)) return;
 
-      const validName = validateName(formattedName);
-      setError(validName);
+      validateName(formattedName);
 
       setCardData({ ...cardData, name: formattedName });
       return;
@@ -131,7 +125,7 @@ function FormInput({ name, value, handleValues, error }) {
     <div>
       <label htmlFor={name}>* {formatText(name)}:</label>
       <input type="text" id={name} value={value} onChange={handleValues} />
-      {error["input"] && error["input"] === name && (
+      {error && error["input"] === name && (
         <span className="error-msg">{error["message"]}</span>
       )}
     </div>

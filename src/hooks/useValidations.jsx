@@ -1,11 +1,18 @@
+import { useState } from "react";
+
 export default function useValidations() {
+  const [error, setError] = useState(null);
+
   const validateNumber = (num) => {
     if (!num) {
-      return { message: "Enter your card number", input: "number" };
+      setError({ message: "Enter your card number", input: "number" });
+      return false;
     } else if (num.length < 15) {
-      return { message: "Enter a valid card number", input: "number" };
+      setError({ message: "Enter a valid card number", input: "number" });
+      return false;
     } else {
-      return { message: "", input: "" };
+      setError(null);
+      return true;
     }
   };
 
@@ -23,25 +30,35 @@ export default function useValidations() {
     };
 
     if (!date) {
-      return { message: "Enter card's expiration date", input: "expiration" };
-    } else if (String(month) > 12) {
-      return { message: "Invalid date", input: "expiration" };
+      setError({
+        message: "Enter card's expiration date",
+        input: "expiration",
+      });
+      return false;
+    } else if (String(month) > 12 || date.length < 4) {
+      setError({ message: "Invalid date", input: "expiration" });
+      return false;
     } else if (isExpired()) {
-      return { message: "Card is expired", input: "expiration" };
+      setError({ message: "Card is expired", input: "expiration" });
+      return false;
     } else {
-      return { message: "", input: "" };
+      setError(null);
+      return true;
     }
   };
 
   const validateName = (name) => {
     if (!name) {
-      return { message: "Enter your name", input: "name" };
+      setError({ message: "Enter your name", input: "name" });
+      return false;
     } else if (name.split(" ").length === 1) {
-      return { message: "Enter your full name", input: "name" };
+      setError({ message: "Enter your full name", input: "name" });
+      return false;
     } else {
-      return { message: "", input: "" };
+      setError(null);
+      return true;
     }
   };
 
-  return { validateNumber, validateDate, validateName };
+  return { validateNumber, validateDate, validateName, error };
 }
