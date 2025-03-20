@@ -8,11 +8,26 @@ export function NewCardForm({ toggleForm }) {
   const { validateNumber, validateDate, validateName, error } =
     useValidations();
   const toggleRef = useRef(null);
+  const [validForm, setValidForm] = useState(false);
   const [cardData, setCardData] = useState({
     name: "",
     number: "",
     expiration: "",
   });
+  const [validData, setValidData] = useState({
+    name: false,
+    number: false,
+    expiration: false,
+  });
+
+  useEffect(() => {
+    const isValid = Object.values(validData).reduce(
+      (valid, current) => valid && current,
+      true
+    );
+
+    setValidForm(isValid);
+  }, [validData]);
 
   useEffect(() => {
     toggleRef.current?.click();
@@ -55,37 +70,35 @@ export function NewCardForm({ toggleForm }) {
       const cardNumber = value.split(" ").join("");
       if (cardNumber.length > 16 || !/^\d*$/.test(cardNumber)) return;
 
-      validateNumber(cardNumber);
+      const validNumber = validateNumber(cardNumber);
+      setValidData({ ...validData, number: validNumber });
 
       const formatted = cardNumber ? cardNumber.match(/.{1,4}/g).join(" ") : "";
       setCardData({ ...cardData, number: formatted });
-      return;
     }
 
     if (id === "expiration") {
       const expirationDate = value.split("/").join("");
       if (expirationDate.length > 4 || !/^\d*$/.test(expirationDate)) return;
 
-      validateDate(expirationDate);
+      const validExpiration = validateDate(expirationDate);
+      setValidData({ ...validData, expiration: validExpiration });
 
       const formatted = expirationDate
         ? expirationDate.match(/.{1,2}/g).join("/")
         : "";
       setCardData({ ...cardData, expiration: formatted });
-      return;
     }
 
     if (id === "name") {
       const formattedName = value.toUpperCase();
       if (!/^[A-Z Ñ]*$/.test(formattedName)) return;
 
-      validateName(formattedName);
+      const validName = validateName(formattedName);
+      setValidData({ ...validData, name: validName });
 
       setCardData({ ...cardData, name: formattedName });
-      return;
     }
-
-    setCardData({ ...cardData, [id]: value });
   };
 
   return (
@@ -112,7 +125,7 @@ export function NewCardForm({ toggleForm }) {
         <button onClick={toggleForm} type="button">
           Cancel <FcCancel />
         </button>
-        <button className="add-card-button">
+        <button className="add-card-button" disabled={!validForm}>
           Add Card <MdOutlineAddCard />
         </button>
       </div>
