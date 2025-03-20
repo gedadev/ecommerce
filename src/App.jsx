@@ -3,14 +3,17 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { Outlet } from "react-router-dom";
 import CartProvider from "./context/CartContext";
+import CustomerProvider from "./context/CustomerContext";
 
 function App() {
   return (
-    <CartProvider>
-      <Navbar />
-      <Outlet />
-      <Footer />
-    </CartProvider>
+    <CustomerProvider>
+      <CartProvider>
+        <Navbar />
+        <Outlet />
+        <Footer />
+      </CartProvider>
+    </CustomerProvider>
   );
 }
 
