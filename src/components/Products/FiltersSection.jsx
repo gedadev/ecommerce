@@ -1,11 +1,11 @@
-import useFilters from "../hooks/useFilters";
-import { Filter } from "./Filter";
-import { useWindowInfo } from "../hooks/useWindowInfo";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import useFilters from "../../hooks/useFilters";
+import { useWindowInfo } from "../../hooks/useWindowInfo";
 import { MdFilterList } from "react-icons/md";
 import { MdFilterListOff } from "react-icons/md";
 import { FaWindowClose } from "react-icons/fa";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Filter } from "./Filter";
 
 export function FiltersSection() {
   const { filtersValues, filters, resetFilters, handleFilters } = useFilters();

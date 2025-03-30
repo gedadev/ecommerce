@@ -1,7 +1,7 @@
 import "../styles/Home.css";
-import { Hero } from "../components/Hero";
-import { CategoriesSection } from "../components/CategoriesSection";
-import { FeaturedProducts } from "../components/FeaturedProducts";
+import { Hero } from "../components/Home/Hero";
+import { CategoriesSection } from "../components/Home/CategoriesSection";
+import { FeaturedProducts } from "../components/Home/FeaturedProducts";
 
 export default function Home() {
   return (

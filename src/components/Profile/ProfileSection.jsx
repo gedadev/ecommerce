@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import useCustomer from "../hooks/useCustomer";
+import useCustomer from "../../hooks/useCustomer";
 
 export { PaymentMethods } from "./PaymentMethods";
 

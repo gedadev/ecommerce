@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import useCart from "../../hooks/useCart";
+import useDetail from "../../hooks/useDetail";
 import { FaShoppingCart } from "react-icons/fa";
-import useCart from "../hooks/useCart";
-import { QuantitySelector } from "./QuantitySelector";
-import useDetail from "../hooks/useDetail";
+import { QuantitySelector } from "../Products/QuantitySelector";
 import { RatingStars } from "./RatingStars";
 
 export function DetailSummary() {

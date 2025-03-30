@@ -1,8 +1,8 @@
+import { useEffect, useState } from "react";
+import useCart from "../../hooks/useCart";
 import { FaMinus } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
 import { FaRegTrashAlt } from "react-icons/fa";
-import useCart from "../hooks/useCart";
-import { useEffect, useState } from "react";
 
 export function QuantitySelector({ product }) {
   const { incrementQuantity, decreaseQuantity, findItemInCart } = useCart();

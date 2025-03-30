@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import ImageSlider from "./ImageSlider";
-import useDetail from "../hooks/useDetail";
+import useDetail from "../../hooks/useDetail";
+import { ImageSlider } from "./ImageSlider";
 
 export function DetailGraphics() {
   const [sliderIndex, setSliderIndex] = useState(0);

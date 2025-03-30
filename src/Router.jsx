@@ -10,7 +10,7 @@ import {
   Orders,
   PaymentMethods,
   ProfileInfo,
-} from "./components/ProfileSection";
+} from "./components/Profile/ProfileSection";
 
 export default function Router() {
   const router = createBrowserRouter([

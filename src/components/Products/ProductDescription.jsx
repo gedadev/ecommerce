@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import useDetail from "../hooks/useDetail";
+import useDetail from "../../hooks/useDetail";
 
 export function ProductDescription() {
   const { id } = useParams();

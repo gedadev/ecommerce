@@ -1,9 +1,9 @@
-import useCustomer from "../hooks/useCustomer";
-import { formatValue } from "../utils/main";
 import { useEffect, useState } from "react";
+import useCustomer from "../../hooks/useCustomer";
+import { formatValue } from "../../utils/main";
+import { MdOutlineAddCard } from "react-icons/md";
 import { CardList } from "./CardList";
 import { NewCardForm } from "./NewCardForm";
-import { MdOutlineAddCard } from "react-icons/md";
 
 export function PaymentMethods() {
   const { paymentMethods } = useCustomer();

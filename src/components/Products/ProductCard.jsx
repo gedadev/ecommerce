@@ -1,11 +1,11 @@
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import useCart from "../../hooks/useCart";
 import { FaStar } from "react-icons/fa";
 import { IconContext } from "react-icons";
 import { FaShoppingCart } from "react-icons/fa";
-import ImageSlider from "./ImageSlider";
-import useCart from "../hooks/useCart";
-import { useEffect, useState } from "react";
-import { QuantitySelector } from "./QuantitySelector";
-import { Link } from "react-router-dom";
+import { ImageSlider } from "./ImageSlider";
+import { QuantitySelector } from "../Products/QuantitySelector";
 
 export function ProductCard({ product }) {
   const { addToCart, findItemInCart } = useCart();

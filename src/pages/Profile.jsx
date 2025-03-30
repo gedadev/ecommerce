@@ -1,4 +1,7 @@
-import { ProfileHeader, ProfileMenu } from "../components/ProfileSection";
+import {
+  ProfileHeader,
+  ProfileMenu,
+} from "../components/Profile/ProfileSection";
 import "../styles/Profile.css";
 import { Outlet } from "react-router-dom";
 

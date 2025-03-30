@@ -1,6 +1,6 @@
 import "../styles/Cart.css";
-import { CartContainer } from "../components/CartContainer";
-import { CartCheckout } from "../components/CartCheckout";
+import { CartContainer } from "../components/Cart/CartContainer";
+import { CartCheckout } from "../components/Cart/CartCheckout";
 
 export default function Cart() {
   return (

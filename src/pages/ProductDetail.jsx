@@ -1,7 +1,9 @@
 import "../styles/Detail.css";
-import { ProductDetailInfo } from "../components/ProductDetailInfo";
-import { ProductDescription } from "../components/ProductDescription";
-import { ProductReviews } from "../components/ProductReviews";
+import {
+  ProductDetailInfo,
+  ProductDescription,
+  ProductReviews,
+} from "../components/Products/DetailSection";
 
 export default function ProductDetail() {
   return (

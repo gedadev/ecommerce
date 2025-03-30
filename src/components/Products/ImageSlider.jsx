@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { GoDotFill } from "react-icons/go";
 
-export default function ImageSlider({ images, alt, action, sliderIndex }) {
+export function ImageSlider({ images, alt, action, sliderIndex }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isActive, setIsActive] = useState(action === "auto");
 

@@ -1,8 +1,8 @@
 import { useState } from "react";
-import useProducts from "../hooks/useProducts";
-import { ProductCard } from "./ProductCard";
+import useProducts from "../../hooks/useProducts";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
+import { ProductCard } from "../Products/ProductCard";
 
 export function FeaturedProducts() {
   const { featuredProducts } = useProducts({ quantity: 6 });

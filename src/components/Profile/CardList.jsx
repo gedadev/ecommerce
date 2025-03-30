@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import useCustomer from "../hooks/useCustomer";
-import { formatValue } from "../utils/main";
+import useCustomer from "../../hooks/useCustomer";
+import { formatValue } from "../../utils/main";
 import { IoSettings } from "react-icons/io5";
 import { FaRegTrashAlt } from "react-icons/fa";
 

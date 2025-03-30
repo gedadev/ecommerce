@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import useProducts from "../hooks/useProducts";
-import { formatText, formatValue } from "../utils/main";
+import useProducts from "../../hooks/useProducts";
+import { formatText, formatValue } from "../../utils/main";
 
 export function CategoriesSection() {
   const { categories } = useProducts({});

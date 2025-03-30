@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
+import useValidations from "../../hooks/useValidations";
+import { formatText } from "../../utils/main";
 import { FcCancel } from "react-icons/fc";
 import { MdOutlineAddCard } from "react-icons/md";
-import { formatText } from "../utils/main";
-import useValidations from "../hooks/useValidations";
 
 export function NewCardForm({ toggleForm }) {
   const { validateNumber, validateDate, validateName, error } =

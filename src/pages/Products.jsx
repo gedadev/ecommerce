@@ -1,7 +1,7 @@
 import "../styles/Products.css";
 import FiltersProvider from "../context/FiltersContext";
-import { ProductsContainer } from "../components/ProductsContainer";
-import { FiltersSection } from "../components/FiltersSection";
+import { ProductsContainer } from "../components/Products/ProductsContainer";
+import { FiltersSection } from "../components/Products/FiltersSection";
 
 export default function Products() {
   return (

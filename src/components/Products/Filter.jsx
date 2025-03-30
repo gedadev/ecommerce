@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import useFilters from "../hooks/useFilters";
-import { formatText, formatWord, formatValue } from "../utils/main";
+import useFilters from "../../hooks/useFilters";
+import { formatText, formatWord, formatValue } from "../../utils/main";
 
 export function Filter({ values }) {
   const [filterLegend, setFilterLegend] = useState(null);

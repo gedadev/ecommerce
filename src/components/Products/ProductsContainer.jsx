@@ -1,7 +1,7 @@
-import useFilters from "../hooks/useFilters";
-import { ProductCard } from "./ProductCard";
+import useFilters from "../../hooks/useFilters";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
+import { ProductCard } from "./ProductCard";
 
 export function ProductsContainer() {
   const { filteredProducts, productsPerPage, currentPage } = useFilters();

@@ -1,5 +1,5 @@
-import useCart from "../hooks/useCart";
-import { QuantitySelector } from "./QuantitySelector";
+import useCart from "../../hooks/useCart";
+import { QuantitySelector } from "../Products/QuantitySelector";
 
 export function CartContainer() {
   const { cart } = useCart();
