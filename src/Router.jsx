@@ -44,6 +44,10 @@ export default function Router() {
           path: "/cart",
           element: <Cart />,
         },
+        {
+          path: "category/:category",
+          element: <Products />,
+        },
       ],
     },
   ]);
