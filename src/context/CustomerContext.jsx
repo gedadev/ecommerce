@@ -62,6 +62,13 @@ export default function CustomerProvider({ children }) {
     setCustomer(null);
     setToken(null);
     setIsLoggedIn(false);
+
+    localStorage.removeItem("token");
+    localStorage.removeItem("customer");
+    setOrders([]);
+    setAddresses([]);
+    setPaymentsMethods([]);
+    setErrorMsg("");
   };
 
   const selectProviderLogo = (provider) => {
