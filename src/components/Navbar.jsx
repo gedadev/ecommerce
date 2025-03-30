@@ -18,20 +18,20 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <Link to={`/`}>
-        <h1 onClick={handleModal}>
+        <h1>
           <FaOpencart />
         </h1>
       </Link>
       <ul className="nav-links">
         <Link to={`products/`}>
-          <li onClick={handleModal}>Shop Now</li>
+          <li>Shop Now</li>
         </Link>
         <div className="login-link">
           <li onClick={handleModal}>{isLoggedIn ? "Profile" : "Login"}</li>
           {activeModal && <LoginModal handleModal={handleModal} />}
         </div>
         <Link to={`cart/`}>
-          <li className="cart-icon" onClick={handleModal}>
+          <li className="cart-icon">
             <TiShoppingCart style={{ fontSize: "1.3rem" }} />
             <span>
               {cart.reduce((count, item) => count + item.quantity, 0)}
